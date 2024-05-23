@@ -1,0 +1,34 @@
+author: Andrew Heiss
+
+instructor:
+  name: Dr. Andrew Heiss
+  name_no_title: Andrew Heiss
+  email: aheiss@gsu.edu
+  url: "https://www.andrewheiss.com"
+  mastodon: "https://fediscience.org/users/andrew/"
+  bluesky: "https://bsky.app/profile/andrew.heiss.phd"
+  github: andrewheiss
+  office: "55 Park Place SE, Room 464"
+  contact_policy: >-
+    E-mail and Slack are the best ways to get in contact with me. I will try to respond to all course-related e-mails and Slack messages within 24 hours (*really*), but also remember that life can be busy and chaotic for everyone (including me!), so if I don't respond right away, don't worry!
+  appointment_url: https://calendly.com/andrewheiss/
+
+course:
+  number: "PMAP 8551/4551"
+  semester: "Summer 2024"
+  days: "Any day"
+  time: "Asynchronous"
+  location: "Anywhere"
+  dates: "June 3–July 23, 2024"
+  github: "https://www.github.com/andrewheiss/datavizs24.classes.andrewheiss.com"
+  url: "https://datavizs24.classes.andrewheiss.com"
+  copyright_year: "2024"
+  slack: "https://gsudatavizs2024.slack.com"
+
+university:
+  name: Georgia State University
+  url: "https://www.gsu.edu"
+
+school:
+  name: Andrew Young School of Policy Studies
+  url: "https://aysps.gsu.edu/"

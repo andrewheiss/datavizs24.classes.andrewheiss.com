@@ -1,0 +1,47 @@
+---
+title: "Interactivity"
+subtitle: "Exercise 11 --- PMAP 8551, Summer 2024"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+date-format: "long"
+format:
+  html:
+    toc: true
+---
+
+---
+
+# Task 1: Reflection
+
+Put your reflection here
+
+
+# Task 2: Interactive plots
+
+```{r}
+#| label: load-libraries-data
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(plotly)
+
+# Load data here
+```
+
+Do the following:
+
+1. Make a plot. Any kind of plot will do (though it might be easiest to work with `geom_point()`).
+
+2. Make the plot interactive with `ggplotly()`. 
+
+3. Make sure the hovering tooltip is more informative than the default.
+
+Good luck and have fun!
+
+
+# Task 3:
+
+Install the {flexdashboard} package and create a new Quarto file in your project by going to File > New File… > Quarto Document… > From Template > Flexdashboard.
+
+Using [the documentation for {flexdashboard} online](https://pkgs.rstudio.com/flexdashboard/articles/using.html), create a basic dashboard that shows a plot (static or interactive) in at least three chart areas. Play with the layout if you're feeling brave.

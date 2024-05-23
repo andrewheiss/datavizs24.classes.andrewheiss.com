@@ -1,0 +1,93 @@
+---
+title: "Themes"
+subtitle: "Exercise 5 --- PMAP 8551, Summer 2024"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+date-format: "long"
+format:
+  html:
+    toc: true
+  pdf:
+    toc: true
+  docx:
+    toc: true
+---
+
+---
+
+# Task 1: Reflection
+
+Put your reflection here
+
+
+# Task 2: Ugly plot
+
+Duncan Greere has collected a database of 48 Soviet dogs who flew as test subjects in USSR's space program in the 1950s and 60s. [The original data can be found here](https://airtable.com/universe/expG3z2CFykG1dZsp/sovet-space-dogs).
+
+For this assignment, you're going to forget all the wonderful CRAP design principles you just learned and try your hardest to **make the ugliest plot in the world**. Modify the color scale and change theme elements to make this plot truly hideous.
+
+## Load and clean data
+
+First we load and clean the data.
+
+```{r}
+#| label: load-clean-data
+#| warning: false
+#| message: false
+
+# You'll only need the tidyverse library for this exercise
+library(tidyverse)
+
+space_dogs_raw <- read_csv("data/Dogs-Database.csv")
+
+space_dogs <- space_dogs_raw |> 
+  # The Fate column seems to either say "Survived" or "Died <DATE>", so we make
+  # a new binary version of the Fate column that is "Survived" if the dog
+  # survived and "Died" otherwise
+  mutate(Fate_binary = ifelse(Fate == "Survived", "Survived", "Died")) |> 
+  # The data lists the dates of each flight, separated by a comma. To convert
+  # that to a number, we do a little trick: count the number of commas in the
+  # cell and add 1 (if there were 2 flights, there would be 1 comma, etc.)
+  mutate(Flights_num = str_count(Flights, ",") + 1)
+```
+
+There are actually some interesting trends here! Female dogs were far less likely to die and went on way more flights than their male counterparts, but that's in part because the USSR used almost only male dogs from 1951-1954, so those dogs faced the early prototypes of rockets and capsules.
+
+```{r}
+#| label: summarize-data
+
+# Summarize the data by fate and gender
+space_dogs_summarized <- space_dogs |>
+  group_by(Fate_binary, Gender) |>
+  summarize(
+    total_dogs = n(),
+    total_flights = sum(Flights_num)
+  )
+
+space_dogs_summarized
+```
+
+## Ugly plot
+
+But the trends don't matter here. What matters is hideous plots. Change the colors, modify the theme, add labels, etc. and make this ugly. You can leave the `geom_pointrange()` as is, or you can mess with it too (or even change it to a bar chart or pie chart or heatmap or something if you feel up to it).
+
+```{r}
+#| label: ugly-plot
+
+ugly_plot <- ggplot(
+  data = space_dogs_summarized,
+  mapping = aes(x = Fate_binary, y = total_flights, color = Gender)
+) +
+  geom_pointrange(aes(ymin = 0, ymax = total_flights),
+    size = 2,
+    position = position_dodge(width = 0.5)
+  )
+
+ugly_plot
+```
+
+```{r}
+#| label: save-plot
+
+# Save the plot as a PNG with ggsave()
+```

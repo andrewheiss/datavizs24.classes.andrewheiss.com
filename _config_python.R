@@ -1,0 +1,5 @@
+reticulate::virtualenv_create("datavizs24")
+reticulate::py_install(c("cleannlp", "spacy"), envname = "datavizs24")
+reticulate::use_virtualenv("datavizs24")
+cleanNLP::cnlp_download_spacy("en_core_web_sm")
+cleanNLP::cnlp_init_udpipe()

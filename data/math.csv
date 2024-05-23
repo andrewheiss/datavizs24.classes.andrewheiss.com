@@ -1,0 +1,45 @@
+group,Description,Command,Output
+Letters,Roman letters,`a b c d e f`,$a\ b\ c\ d\ e\ f$
+Letters,Greek letters (see [this](https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols) for all possible letters),`\alpha \beta \Gamma \gamma \Delta \delta \epsilon`,$\alpha\ \beta\ \Gamma\ \gamma\ \Delta\ \delta\ \epsilon$
+Letters,"Letters will automatically be italicized and treated as math variables;
+if you want actual text in the math, use `\text{}`","Ew: `Treatment = \beta`<br>
+Good: `\text{Treatment} = \beta`","Ew: $Treatment = \beta$<br>
+Good: $\text{Treatment} = \beta$"
+Letters,"Extra spaces will automatically be removed; if you want a space, use `\ `","No space: `x y`<br>
+Space: `x\ y`","No space: $x y$<br>
+Space: $x\ y$"
+Superscripts and subscripts,Use `^` to make one character superscripted.,`x^2`,$x^2$
+Superscripts and subscripts,Wrap the superscripted part in `{}` if there's more than one character,`x^{2+y}`,$x^{2+y}$
+Superscripts and subscripts,Use `_` to make one character subscripted,`\beta_1`,$\beta_1$
+Superscripts and subscripts,Wrap the subscripted part in `{}` if there's more than one character,"`\beta_{i, t}`","$\beta_{i, t}$"
+Superscripts and subscripts,Use superscripts and subscripts simultaneously,`\beta_1^{\text{Treatment}}`,$\beta_1^{\text{Treatment}}$
+Superscripts and subscripts,You can even nest them,`x^{2^{2^2}}`,$x^{2^{2^2}}$
+Math operations,Addition,`2 + 5 = 7`,$2 + 5 = 7$
+Math operations,Subtraction,`2 - 5 = -3`,$2 - 5 = -3$
+Math operations,Multiplication,"`x \times y`<br>
+`x \cdot y`","$x \times y$<br>
+$x \cdot y$"
+Math operations,Division,`8 \div 2`,$8 \div 2$
+Math operations,Fractions,`\frac{8}{2}`,$\frac{8}{2}$
+Math operations,Square roots; use `[3]` for other roots,"`\sqrt{81} = 9`<br>
+`\sqrt[3]{27} = 3`","$\sqrt{81} = 9$<br>
+$\sqrt[3]{27} = 3$"
+Math operations,Summation; use sub/superscripts for extra details,"`\sum x`<br>
+`\sum_{n=1}^{\infty} \frac{1}{n}`","$\sum x$<br>
+$\sum_{n=1}^{\infty} \frac{1}{n}$"
+Math operations,Products; use sub/superscripts for extra details,"`\prod x`<br>
+`\prod_{n=1}^{5} n^2`","$\prod x$<br>
+$\prod_{n=1}^{5} n^2$"
+Math operations,Integrals; use sub/superscripts for extra details,"`\int x^2 \ dx`<br>
+`\int_{1}^{100} x^2 \ dx`","$\int x^2 \ dx$<br>
+$\int_{1}^{100} x^2 \ dx$"
+Extra symbols,Add a bar for things like averages,`\bar{x}`,$\bar{x}$
+Extra symbols,Use an overline for longer things,"Ew: `\bar{abcdef}`<br>
+Good: `\overline{abcdef}`","Ew: $\bar{abcdef}$<br>
+Good: $\overline{abcdef}$"
+Extra symbols,Add a hat for things like estimates,`\hat{y}`,$\hat{y}$
+Extra symbols,Use a wide hat for longer things,"Ew: `\hat{abcdef}`<br>
+Good: `\widehat{abcdef}`","Ew: $\hat{abcdef}$<br>
+Good: $\widehat{abcdef}$"
+Extra symbols,Use arrows for DAG-like things,`Z \rightarrow Y \leftarrow X`,$Z \rightarrow Y \leftarrow X$
+Bonus fun,Use colors!; see [here](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX) for more details and [here](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX#Reference_guide) for a list of color names,`{\color{red} y} = {\color{blue} \beta_1 x_1}`,${\color{red} y} = {\color{blue} \beta_1 x_1}$

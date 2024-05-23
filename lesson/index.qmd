@@ -1,0 +1,58 @@
+---
+title: Interactive lessons
+format: html
+engine: knitr
+filters:
+  - webr
+webr:
+  packages:
+    - ggplot2
+    - dplyr
+    - scales
+    - gapminder
+  cell-options:
+    editor-font-scale: 0.8
+    fig-width: 7
+    fig-height: 4.3
+    out-width: "100%"
+---
+
+Each class session has an interactive lesson that you will work through ***after*** doing the readings and watching the lecture. These lessons are a central part of the class—they will teach you how to use {ggplot2} and other packages in the tidyverse to create beautiful and truthful visualizations with R.
+
+Interactive code sections look like this. Make changes in the text box and click on the green "Run Code" button to see the results. Sometimes there will be a tab with a hint or solution.
+
+:::: {.callout-important}
+
+### Your turn
+
+Modify the code here to show the relationship between health and wealth for 2002 instead of 2007.
+
+::: {.panel-tabset}
+## {{< fa code >}}&ensp;Interactive editor
+
+```{webr-r}
+gapminder_filtered <- gapminder |>
+  filter(year == 2007)
+
+ggplot(data = gapminder_filtered,
+       mapping = aes(x = gdpPercap, y = lifeExp, 
+                     size = pop, color = continent)) +
+  geom_point() + 
+  scale_x_log10(labels = scales::dollar_format(accuracy = 1)) +
+  scale_size_continuous(labels = scales::label_comma()) +
+  scale_color_viridis_d(option = "plasma") +
+  labs(x = "GDP per capita", y = "Life expectancy",
+       title = "Health and wealth are strongly related",
+       subtitle = "142 countries; 2007 only", caption = "Source: The Gapminder Project",
+       color = "Continent", size = "Population") +
+  theme_bw()
+```
+
+## {{< fa lightbulb >}}&ensp;Hint
+
+**Hint:** You'll want to change something in the code that creates `gapminder_filtered`. The text in the subtitle won't change automatically, so you'll want to edit that too.
+:::
+
+::::
+
+If you're curious how this works, each interactive code section uses [the amazing {quarto-webr} package](https://quarto-webr.thecoatlessprofessor.com/) to run R directly in your browser.

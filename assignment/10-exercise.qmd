@@ -1,0 +1,85 @@
+---
+title: "Enhancing graphics"
+date: "2024-07-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+For this exercise, you'll export a PDF and/or an SVG from R, open it in a [vector edting program](/resource/graphics-editors.qmd), add annotations and make minor edits, and then export a final polished version.
+
+I have given you 100% of the R code you need to use. All you have to do is run it. I've also given you all the text and pieces of the final plot—[see those below](#task-2-details-hot-dog-eating-contest-winners).
+
+This example page will be incredibly useful for you:
+
+- [{{< fa laptop-code >}} Enhancing graphics](/example/10-example.qmd)
+
+You'll be doing all your R work in Quarto. You can download a zipped file of a pre-made project here:
+
+- [{{< fa file-archive >}} `10-exercise.zip`](/projects/10-exercise.zip)
+
+You don't need to make your plots super fancy (except for these annotations), but you should play around with the plots and try to go beyond the basics—experiment with changing colors or modifying themes and theme elements.
+
+And as always, if you're struggling, *please* talk to me and use Slack and talk to your classmates! Don't suffer in silence!
+
+
+## Instructions
+
+1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `exercise-14.Rproj`: [{{< fa file-archive >}} `10-exercise.zip`](/projects/10-exercise.zip)
+
+   You'll need to make sure you have these packages installed on your computer: `tidyverse`, `svglite`. If you try to load one of those packages with `library(tidyverse)` or `library(svglite)`, etc., and R gives an error that the package is missing, use the "Packages" panel in RStudio to install it.
+
+   (Alternatively, you can open the project named "Exercise 14" on Posit.cloud and complete the assignment in your browser without needing to install anything. [This link should take you to the project](https://posit.cloud/spaces/401677/content/6337020)—if it doesn't, log in and look for the project named "Exercise 14".)
+
+2. Rename the Quarto file named `your-name_exercise-14.qmd` to something that matches your name and open it in RStudio.
+
+3. Complete the tasks given in the Quarto file. 
+
+   Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or [the example page](/example/10-example.qmd)—don't try to write everything from scratch!).
+
+   You'll need to insert your own code chunks. Rather than typing them by hand (that's tedious!), use the "Insert" button at the top of the editing window, or press  <kbd>⌥</kbd> + <kbd>⌘</kbd> + <kbd>I</kbd> on macOS, or <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>I</kbd> on Windows.
+
+```{r insert-chunk-button, echo=FALSE, out.width="19%", indent="   ", fig.align="center"}
+knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error = FALSE)
+```
+
+   Remember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press <kbd>⌘</kbd> + <kbd>enter</kbd> (for macOS users) or <kbd>ctrl</kbd> + <kbd>enter</kbd> (for Windows users).
+
+   Make sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.
+
+1. When you're all done, click on the "Knit" button at the top of the editing window and create a Word or PDF version (if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege. **Do not upload a knitted HTML file** (they don't work on iCollege).
+
+```{r render-button, echo=FALSE, out.width="50%", indent="   ", fig.align="center"}
+knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
+```
+
+
+## Task 2 details: Hot dog eating contest winners
+
+Recreate this plot (or something like it):
+
+```{r hotdogs, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/files/img/assignments/hot-dogs.gif", error = FALSE)
+```
+
+Create and save a basic bar chart of hot dog eating contest winners using the code provided. Open the resulting file in a [vector editing program](/resource/graphics-editors.qmd).
+
+Be sure that you save your file **with a different name**. You don't want to accidentally overwrite all your enhancements and updates when you knit this document. That would be so sad.
+
+You don't have data prior to 1980, so **don't worry about recreating that half of the graph**. You don't have to put all the text boxes in exactly the same locations—you can even do a completely different design and add different annotations if you want. 
+
+The point of this assignment is to help you get familiar with vector editing software, so don't stress out about R issues or graphic design issues (though try to follow CRAP where possible).
+
+::: {.callout-note}
+### Plot text
+
+To save you some typing, here's all the text from the original plot. Copy and paste it into your enhanced version (or change the text if you want—again, do whatever you want):
+
+- Winners from Nathan’s Hot Dog Eating Contest
+- It’s that time of year again. Since 1916, the annual eating competition has grown substantially attracting competitors from around the world
+- Frank Dellarosa eats 21 and a half HDBs over 12 minutes, breaking the previous record of 19 and a half
+- Through 2001-2005, Takeru Kobayashi wins by no less than 12 HDBs. In 2006 he only wins by 1.75. After winning 6 years in a row and setting the world record 4 times, Kobayashi places second in 2007.
+- For the first time since 1999, an American reclaims the title when Joey Chestnut consumes 66 HDBs, a new world record. Chestnut repeats in 2008.
+- Source: Wikipedia and Nathan’s Famous
+:::

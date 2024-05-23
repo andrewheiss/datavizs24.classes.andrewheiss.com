@@ -1,0 +1,185 @@
+---
+title: "Using Quarto"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+[Quarto Markdown](https://quarto.org/) is [regular Markdown](/resource/markdown.qmd) with R code and output sprinkled in. You can do everything you can with [regular Markdown](/resource/markdown.qmd), but you can incorporate graphs, tables, and other code output directly in your document. You can create HTML, PDF, and Word documents, PowerPoint and HTML presentations, websites, books, and even interactive dashboards with Quarto. This whole course website is created with Quarto.
+
+Quarto's predecessor was called R Markdown and worked exclusively with R (though there are ways to use other languages in document). Quarto is essentially "R Markdown 2.0," but it is designed to be language agnostic. You can [use R](https://quarto.org/docs/computations/r.html), [Python](https://quarto.org/docs/computations/julia.html), [Julia](https://quarto.org/docs/computations/julia.html), [Observable JS](https://quarto.org/docs/computations/ojs.html), and even [Stata](https://gist.github.com/andrewheiss/f38ceb81d362a7fc7cda3ae9ccf1283c) code all in the same document. It is magical.
+
+::: {.callout-tip}
+### Quarto documentation
+
+The [documentation for Quarto](https://quarto.org/) is extremely comprehensive—rely on it throughout the semester! Here are some of the more important pages:
+
+- [**Guide**](https://quarto.org/docs/guide/): A comprehensive guide to all the different things you can do with Quarto, including:
+  - [**Figures**](https://quarto.org/docs/authoring/figures.html)
+  - [**Tables**](https://quarto.org/docs/authoring/tables.html)
+  - [**Cross references**](https://quarto.org/docs/authoring/cross-references.html)
+  - [**Citations and footnotes**](https://quarto.org/docs/authoring/footnotes-and-citations.html)
+  - [**Special layouts**](https://quarto.org/docs/authoring/article-layout.html) (like putting content in the margins)
+  - [**Callout blocks**](https://quarto.org/docs/authoring/callouts.html) (like the green box this text is in)
+- [**Reference**](https://quarto.org/docs/reference/): Complete documentation for all the options for specific formats, including these:
+  - [**HTML**](https://quarto.org/docs/reference/formats/html.html)
+  - [**PDF**](https://quarto.org/docs/reference/formats/pdf.html)
+  - [**Microsoft Word**](https://quarto.org/docs/reference/formats/docx.html)
+
+You can also use Quarto for [books](https://quarto.org/docs/books/), [websites](https://quarto.org/docs/websites/), [presentations](https://quarto.org/docs/presentations/), and [dashboards](https://quarto.org/docs/dashboards/).
+:::
+
+Here are the most important things you'll need to know about Quarto in this class:
+
+## Key terms
+
+- **Document**: A Markdown file where you type stuff
+
+- **Chunk**: A piece of R code that is included in your document. It looks like this:
+
+  ```{{r}}
+  # Code goes here
+  1 + 1
+  ```
+
+  There must be an empty line before and after the chunk. The final three backticks must be the only thing on the line—if you add more text, or if you forget to add the backticks, or accidentally delete the backticks, your document will not render correctly.
+
+- **Render**: When you render a document, R runs each of the chunks sequentially and converts the output of each chunk into Markdown. R then runs the document through [pandoc](https://pandoc.org/) to convert it to HTML or PDF or Word (or whatever output you've selected).
+
+  You can render by clicking on the "Render" button at the top of the editor window, or by pressing `⌘⇧K` on macOS or `control + shift + K` on Windows.
+
+```{r render-button, echo=FALSE, out.width="50%", indent="  "}
+knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
+```
+
+
+## Add chunks
+
+There are three ways to insert chunks:
+
+- Press `⌘⌥I` on macOS or `control + alt + I` on Windows
+
+- Click on the "Insert" button at the top of the editor window
+
+```{r insert-chunk, echo=FALSE, out.width="30%", indent="  "}
+knitr::include_graphics("/files/img/reference/insert-chunk.png", error = FALSE)
+```
+
+- Manually type all the backticks and curly braces (don't do this)
+
+
+## Chunk names
+
+You can add names to chunks to make it easier to navigate your document. If you click on the little dropdown menu at the bottom of your editor in RStudio, you can see a table of contents that shows all the headings and chunks. If you name chunks, they'll appear in the list. If you don't include a name, the chunk will still show up, but you won't know what it does.
+
+```{r chunk-toc, echo=FALSE, out.width="40%"}
+knitr::include_graphics("/files/img/reference/chunk-toc.png", error = FALSE)
+```
+
+There are two ways to add a chunk name:
+
+- As a special comment called `label:`, following `#|` at the top of the chunk (this is the preferred way):
+
+  ```{{r}}
+  #| label: name-of-this-chunk
+  
+  1 + 1
+  ```
+
+- Immediately after the `{r` in the first line of the chunk (this is the older way):
+
+  ```{{r name-of-this-chunk}}
+  1 + 1
+  ```
+
+Names cannot contain spaces, but they can contain underscores and dashes. **All chunk names in your document must be unique.**
+
+
+## Chunk options
+
+There are a bunch of different options you can set for each chunk. You can see a complete list in the [R Markdown Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) or at [{knitr}'s website](https://yihui.org/knitr/options/).
+
+Set chunk options as special comments following `#|` at the top of the chunk (this is the preferred way):
+
+```{{r}}
+#| label: fig-some-plot
+#| fig-cap: "Here's a caption for this plot"
+#| fig-width: 6
+#| fig-height: 4
+#| echo: false
+
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Technically you can also set these options inside the `{r}` section of the chunk—this is the old way to do it, but it gets really gross and long when you have lots of settings:
+
+``` default
+{r fig-some-plot, fig.width=6, fig.height=4, echo=FALSE, fig.cap = "Here's a caption for this plot"}
+```
+
+Here are some of the most common chunk options you'll use in this class:
+
+- `label: fig-whatever`: Try to always use chunk labels. If you want things to be cross-referenceable, use a `fig-` prefix on chunks that make figures and a `tbl-` prefix on chunks that make tables
+- `tbl-cap: "Blah"`: Add a caption to your table
+- `fig-cap: "Blah"`: Add a caption to your figure
+- `fig-width: 5` and `fig-height: 3` (*or whatever number you want*): Set the dimensions for figures
+- `echo: false`: The code is not shown in the final document, but the results are
+- `message: false`: Any messages that R generates (like all the notes that appear after you load a package) are omitted
+- `warning: false`: Any warnings that R generates are omitted
+- `include: false`: The chunk still runs, but the code and results are not included in the final document
+
+
+## Inline chunks
+
+You can also include R output directly in your text, which is really helpful if you want to report numbers from your analysis. To do this, use `` `r "\u0060r r_code_here\u0060"` ``.
+
+It's generally easiest to calculate numbers in a regular chunk beforehand and then use an inline chunk to display the value in your text. For instance, this document…
+
+````
+```{{r}}
+#| label: find-avg-mpg
+#| echo: false
+
+avg_mpg <- mean(mtcars$mpg)
+```
+
+The average fuel efficiency for cars from 1974 was `r "\u0060r round(avg_mpg, 1)\u0060"` miles per gallon.
+
+````
+
+… would render to this:
+
+> The average fuel efficiency for cars from 1974 was `r round(mean(mtcars$mpg), 1)` miles per gallon.
+
+
+## Output formats
+
+You can specify what kind of document you create when you render in the [YAML front matter](/resource/markdown.qmd#front-matter). 
+
+``` yaml
+title: "My document"
+format:
+  html: default
+  pdf: default
+  docx: default
+```
+
+The indentation of the YAML section matters, especially when you have settings nested under each output type. Here's what a typical `format` section might look like:
+
+``` yaml
+---
+title: "My document"
+author: "My name"
+date: "June 4, 2024"
+format: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    toc: yes
+  word_document: 
+    toc: yes
+---
+```

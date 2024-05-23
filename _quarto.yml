@@ -1,0 +1,285 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!slides/"
+    - "!projects/"
+    - "!files/projects/"
+  resources:
+    - "files/"
+    - "projects/"
+    - "slides/*.html"
+    - "slides/*.pdf"
+    - "slides/img/"
+    - "slides/libs/"
+    - "slides/css/"
+    - "slides/*_files/"
+  preview:
+    port: 3333
+
+execute:
+  freeze: auto  # Re-render only when source changes
+
+bibliography: files/bib/readings.bib
+csl: files/bib/chicago-author-date.csl
+
+website:
+  title: "Data Visualization with R"
+  description: "Use R, ggplot2, and the principles of graphic design to create beautiful and truthful visualizations of data"
+  site-url: "https://datavizs24.classes.andrewheiss.com"
+
+  favicon: "/files/favicon-512.png"
+
+  twitter-card:
+    image: "/files/social-image-s24.png"
+    card-style: summary_large_image
+    creator: "@andrewheiss"
+    # site: "@andrewheiss"
+
+  open-graph:
+    image: "/files/social-image-s24.png"
+    locale: en_US
+
+  repo-url: "https://github.com/andrewheiss/datavizs24.classes.andrewheiss.com"
+  repo-actions: [edit, issue]
+  
+  page-navigation: true
+
+  navbar:
+    pinned: true
+    background: "#E16462"
+    right:
+      - syllabus.qmd
+      - schedule.qmd
+      - text: "Content"
+        file: content/index.qmd
+      - text: "Lessons"
+        file: lesson/index.qmd
+      - text: "Examples"
+        file: example/index.qmd
+      - text: "Assignments"
+        file: assignment/index.qmd
+      - text: "Resources"
+        file: resource/index.qmd
+      - text: "News"
+        file: news/index.qmd
+      - icon: slack
+        href: "https://gsudatavizs2024.slack.com"
+        aria-label: Slack
+      - icon: cloud-fill
+        href: "https://posit.cloud"
+        aria-label: Posit.cloud
+
+  sidebar:
+    - title: "Classes and readings"
+      style: "docked"
+      search: false
+      background: light
+      contents:
+        - section: "Overview"
+          contents:
+            - content/index.qmd
+        - section: "Foundations"
+          contents:
+            - text: "1: Truth, beauty, and data + the tidyverse"
+              file: content/01-content.qmd
+            - text: "2: Graphic design"
+              file: content/02-content.qmd
+            - text: "3: Mapping data to graphics"
+              file: content/03-content.qmd
+        - section: "Core types of graphics"
+          contents:
+            - text: "4: Amounts and proportions"
+              file: content/04-content.qmd
+            - text: "5: Themes"
+              file: content/05-content.qmd
+            - text: "6: Uncertainty"
+              file: content/06-content.qmd
+            - text: "7: Relationships"
+              file: content/07-content.qmd
+            - text: "8: Comparisons"
+              file: content/08-content.qmd
+            - text: "9: Annotations"
+              file: content/09-content.qmd
+        - section: "Special applications"
+          contents:
+            - text: "10: Interactivity"
+              file: content/10-content.qmd
+            - text: "11: Time"
+              file: content/11-content.qmd
+            - text: "12: Space"
+              file: content/12-content.qmd
+            - text: "13: Text"
+              file: content/13-content.qmd
+            - text: "14: Enhancing graphics"
+              file: content/14-content.qmd
+            - text: "15: Truth, beauty, and data revisited"
+              file: content/15-content.qmd
+    
+    - title: "Examples"
+      contents:
+        - section: "Overview"
+          contents:
+            - example/index.qmd
+        - section: "Foundations"
+          contents:
+            - text: "1: Introduction to R and the tidyverse"
+              file: example/01-example.qmd
+            - text: "2: Graphic design"
+              file: example/02-example.qmd
+            - text: "3: Mapping data to graphics"
+              file: example/03-example.qmd
+        - section: "Core types of graphics"
+          contents:
+            - text: "4: Amounts and proportions"
+              file: example/04-example.qmd
+            - text: "5: Themes"
+              file: example/05-example.qmd
+            - text: "6: Uncertainty"
+              file: example/06-example.qmd
+            - text: "7: Relationships"
+              file: example/07-example.qmd
+            - text: "8: Comparisons"
+              file: example/08-example.qmd
+            - text: "9: Annotations"
+              file: example/09-example.qmd
+        - section: "Special applications"
+          contents:
+            - text: "10: Interactivity"
+              file: example/10-example.qmd
+            - text: "11: Time"
+              file: example/11-example.qmd
+            - text: "12: Space"
+              file: example/12-example.qmd
+            - text: "13: Text"
+              file: example/13-example.qmd
+            - text: "14: Enhancing graphics"
+              file: example/14-example.qmd
+            - text: "15: Sharing R output online"
+              file: example/15-example.qmd
+
+    - title: "Assignments"
+      contents:
+        - section: "Overview"
+          contents:
+            - assignment/index.qmd
+        - section: "Projects"
+          contents:
+            - text: "Mini project 1"
+              file: assignment/01-mini-project.qmd
+            - text: "Mini project 2"
+              file: assignment/02-mini-project.qmd
+            - text: "Final project"
+              file: assignment/final-project.qmd
+        - section: "Exercises"
+          contents:
+            - text: "1: Introduction to R and the tidyverse"
+              file: assignment/01-exercise.qmd
+            - text: "2: Graphic design"
+              file: assignment/02-exercise.qmd
+            - text: "3: Mapping data to graphics"
+              file: assignment/03-exercise.qmd
+            - text: "4: Amounts and proportions"
+              file: assignment/04-exercise.qmd
+            - text: "5: Themes"
+              file: assignment/05-exercise.qmd
+            - text: "6: Uncertainty"
+              file: assignment/06-exercise.qmd
+            - text: "7: Relationships"
+              file: assignment/07-exercise.qmd
+            - text: "8: Comparisons"
+              file: assignment/08-exercise.qmd
+            - text: "9: Annotations"
+              file: assignment/09-exercise.qmd
+            - text: "10: Interactivity"
+              file: assignment/10-exercise.qmd
+            - text: "11: Time"
+              file: assignment/11-exercise.qmd
+            - text: "12: Space"
+              file: assignment/12-exercise.qmd
+            - text: "13: Text"
+              file: assignment/13-exercise.qmd
+            - text: "14: Enhancing graphics"
+              file: assignment/14-exercise.qmd
+            - text: "15: Truth, beauty, and data revisited"
+              file: assignment/15-exercise.qmd
+    
+    - title: "Classes and readings"
+      contents:
+        - section: "Overview"
+          contents:
+            - lesson/index.qmd
+        - section: "Foundations"
+          contents:
+            - text: "1: Truth, beauty, and data + the tidyverse"
+              file: lesson/01-lesson.qmd
+            - text: "2: Graphic design"
+              file: lesson/02-lesson.qmd
+            - text: "3: Mapping data to graphics"
+              file: lesson/03-lesson.qmd
+        - section: "Core types of graphics"
+          contents:
+            - text: "4: Amounts and proportions"
+              file: lesson/04-lesson.qmd
+            - text: "5: Themes"
+              file: lesson/05-lesson.qmd
+            - text: "6: Uncertainty"
+              file: lesson/06-lesson.qmd
+            - text: "7: Relationships"
+              file: lesson/07-lesson.qmd
+            - text: "8: Comparisons"
+              file: lesson/08-lesson.qmd
+            - text: "9: Annotations"
+              file: lesson/09-lesson.qmd
+        - section: "Special applications"
+          contents:
+            - text: "10: Interactivity"
+              file: lesson/10-lesson.qmd
+            - text: "11: Time"
+              file: lesson/11-lesson.qmd
+            - text: "12: Space"
+              file: lesson/12-lesson.qmd
+            - text: "13: Text"
+              file: lesson/13-lesson.qmd
+            - text: "14: Enhancing graphics"
+              file: lesson/14-lesson.qmd
+            - text: "15: Truth, beauty, and data revisited"
+              file: lesson/15-lesson.qmd
+    
+    - title: "Resources"
+      contents:
+        - section: "Resources"
+          contents:
+            - resource/index.qmd
+            - resource/design.qmd
+            - resource/graphics-editors.qmd
+            - resource/visualization.qmd
+            - resource/r.qmd
+            - resource/style.qmd
+            - resource/data.qmd
+            - resource/citations.qmd
+        - section: "Guides"
+          contents:
+            - resource/install.qmd
+            - resource/markdown.qmd
+            - resource/quarto.qmd
+            - resource/unzipping.qmd
+
+
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)<br>
+      [View the source at {{< fa brands github >}} GitHub]({{< var course.github >}})
+
+format:
+  html:
+    theme:
+      - litera
+      - html/custom.scss
+    toc: true
+    highlight-style: monokai

@@ -1,0 +1,9 @@
+---
+title: "Text"
+date: "2024-07-15"
+date_end: "2024-07-19"
+---
+
+There's no lesson for this session. In your exercise this week you'll visualize text data using [{tidytext}](https://www.tidytextmining.com/), and the best way to figure that out is to just play with data.
+
+So head over to [the example](/example/14-example.qmd) to see how it's done, or [the exercise](/assignment/14-exercise.qmd) to get started!

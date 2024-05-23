@@ -1,0 +1,5 @@
+_site/*
+files/*
+_extensions/*
+_freeze/*
+_targets/*

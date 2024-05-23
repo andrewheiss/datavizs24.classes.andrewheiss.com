@@ -1,0 +1,12 @@
+---
+title: Citations and bibliography
+---
+
+You can access [a shared group Zotero library of all the non-web-based class reading references](https://www.zotero.org/groups/datavizf23) and link it to your Zotero account to easily cite the course materials. 
+
+Alternatively, you can download a BibTeX file of all the references. You can open it in [BibDesk on macOS](http://bibdesk.sourceforge.net/), [JabRef on Windows](http://www.jabref.org/), or [Zotero](https://www.zotero.org/) on macOS, Windows, and online.
+
+<p class="buttons" style="text-align:center;">
+<a class="btn btn-danger" target="_blank" href="https://www.zotero.org/groups/datavizf23">{{< ai zotero color=white >}}&ensp;Zotero group library</a> &ensp;
+<a class="btn btn-danger" target="_blank" href="/files/bib/readings.bib" role="button">{{< fa book >}}&ensp;BibTeX file</a>
+</p>

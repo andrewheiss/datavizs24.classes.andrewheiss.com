@@ -1,0 +1,84 @@
+---
+title: "Uncertainty"
+subtitle: "Exercise 6 --- PMAP 8551, Summer 2024"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+date-format: "long"
+format:
+  html:
+    toc: true
+  pdf:
+    toc: true
+  docx:
+    toc: true
+---
+
+---
+
+# Task 1: Reflection
+
+Put your reflection here
+
+
+# Task 2: Visualizing uncertainty with gapminder
+
+For this exercise you'll revisit Hans Rosling's gapminder data on health and wealth. Install the {gapminder} package if you haven't already. Also install the {ggridges} and {gghalves} packages.
+
+```{r}
+#| label: load-libraries-data
+#| warning: false
+#| message: false
+
+library(tidyverse)  # For ggplot, dplyr, and friends
+library(gapminder)  # For health/wealth data
+library(ggridges)   # For ridge plots
+library(gghalves)   # For half geoms
+```
+
+## Histograms
+
+Make a histogram of *logged* GDP per capita for 1997 only, across all five continents. 
+
+```{r}
+#| label: filter-gapminder-1997
+
+# Create a filtered dataset
+```
+
+```{r}
+#| label: plot-histogram
+
+# Add a histogram here. You'll probably want to fill and facet.
+# You'll also need to add scale_x_log10()
+```
+
+
+## Densities
+
+Make a ridge plot of life expectancy over time, from 1952 to 2007. You'll need to use the full gapminder data, not the 1997-only data.
+
+Tip! `year` will be on the y-axis, but it must be a categorical variable to work with {ggridges}, so you'll either need to wrap it in `as.factor()` like `aes(..., y = as.factor(year))`, or add a new categorical/factor year column to the gapminder dataset with `mutate()`.
+
+```{r}
+#| label: plot-ridgeplot
+
+# Add a ridge plot here
+```
+
+
+## Boxes, violins, and friends
+
+Make a filtered dataset that selects data from only 2007 *and* removes Oceania. Show the distribution of *logged* GDP per capita across the *four* continents using some combination of boxplots and/or violin plots and/or strip plots, either overlaid on top of each other, or using their `geom_half_*()` counterparts from {gghalves}.
+
+```{r}
+#| label: filter-gapminder-2007-sans-oceania
+
+# Create a filtered dataset
+```
+
+```{r}
+#| label: plot-distribution
+
+# Add a plot here. You'll want to use either scale_x_log10() or scale_y_log10(),
+# depending on which direction your boxplots/violin plots/etc. go
+```

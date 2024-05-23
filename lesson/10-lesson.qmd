@@ -1,0 +1,9 @@
+---
+title: "Enhancing graphics"
+date: "2024-07-01"
+date_end: "2024-07-05"
+---
+
+There's no lesson for this session. In your exercise this week you'll export a plot from ggplot, open it in a [vector editing program](/resource/graphics-editors.html), and make it extra pretty and well-designed. The best way to learn this is by actually doing it.
+
+So head over to [the example](/example/10-example.qmd) to see how it's done, or [the exercise](/assignment/10-exercise.qmd) to get started!

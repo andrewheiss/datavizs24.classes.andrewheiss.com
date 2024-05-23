@@ -1,0 +1,121 @@
+---
+title: "Introduction to R and the tidyverse"
+date: "2024-06-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+::: {.callout-important}
+
+Before starting this exercise, make sure you complete everything at [the lesson for this week](/lesson/01-lesson.qmd), especially the Posit Primers.
+:::
+
+
+## Task 1: Make an RStudio Project
+
+1. Use either Posit.cloud or RStudio on your computer (preferably RStudio on your computer! [Follow these instructions to get started!](/resource/install.qmd)) to create a new RStudio Project.
+
+2. Create a folder named "data" in the project folder you just made.
+
+3. Download this CSV file and place it in that folder:
+
+   - [{{< fa file-csv >}} `cars.csv`](/files/data/package_data/cars.csv)
+
+4. In RStudio, go to "File" > "New File…" > "Quarto Document…" and click "OK" in the dialog without changing anything.
+
+5. Delete all the placeholder text in that new file and replace it with this:
+
+   ````default
+   ---
+   title: "Problem set 1"
+   author: "Put your name here"
+   format: 
+     html:
+       toc: true
+     pdf:
+       toc: true
+     docx:
+       toc: true
+   ---
+   
+   ```{{r}}
+   #| label: load-libraries-data
+   #| warning: false
+   #| message: false
+
+   library(tidyverse)
+   
+   cars <- read_csv("data/cars.csv")
+   ```
+   
+   # Reflection
+   
+   Replace this text with your reflection
+   
+   
+   # My first plots
+
+   Insert a chunk below and use it to create a scatterplot (hint: `geom_point()`) with diplacement (`displ`) on the x-axis, city MPG (`cty`) on the y-axis, and with the points colored by drive (`drv`).
+
+   PUT CHUNK HERE
+
+   Insert a chunk below and use it to create a histogram (hint: `geom_histogram()`) with highway MPG (`hwy`) on the x-axis. Do not include anything on the y-axis (`geom_histogram()` will do that automatically for you). Choose an appropriate bin width. If you're brave, facet by drive (`drv`).
+
+   PUT CHUNK HERE
+
+
+   # My first data manipulation
+
+   Insert a chunk below and use it to calculate the average city MPG (`cty`) by class of car (`class`). This won't be a plot---it'll be a table. Hint: use a combination of `group_by()` and `summarize()`.
+
+   PUT CHUNK HERE
+   ````
+
+6. Save the Quarto file with some sort of name (**without any spaces!**)
+
+7. Your project folder should look something like this:
+
+```{r project-structure, echo=FALSE, out.width="30%", indent="   "}
+knitr::include_graphics("/files/img/assignments/project-structure.png", error = FALSE)
+```
+
+
+## Task 2: Work with R
+
+1. Add your reading reflection to the appropriate place in the Quarto file. You can type directly in RStudio if you want (though there's no spell checker), or you can type it in Word or Google Docs and then paste it into RStudio.
+
+2. Remove the text that says "PUT CHUNK HERE" and insert a new R code chunk. Either type <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>i</kbd> on Windows, or <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>i</kbd> on macOS, or use the "Insert Chunk" menu:
+
+```{r insert-chunk-button, echo=FALSE, out.width="19%", indent="   "}
+knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error = FALSE)
+```
+
+3. Follow the instructions for the three chunks of code.
+
+4. Knit your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install.qmd#install-tinytex)). Use the "Knit" menu:
+
+```{r render-button, echo=FALSE, out.width="50%", indent="   ", fig.align="center"}
+knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
+```
+
+5. Upload the knitted document to iCollege.
+
+6. `r emoji::emoji("tada")` Party! `r emoji::emoji("tada")`
+
+::: {.callout-tip}
+### File organization
+
+You'll be doing this same process for all your future exercises. Each exercise will involve an Quarto file. You can either create a new RStudio Project directory for all your work:
+
+```{r single-directory, echo=FALSE, out.width="30%"}
+knitr::include_graphics("/files/img/reference/rproj-one-folder.png", error = FALSE)
+```
+
+Or you can create individual projects for each assignment and mini-project:
+
+```{r multiple-directories, echo=FALSE, out.width="30%",}
+knitr::include_graphics("/files/img/reference/rproj-multiple-folders.png", error = FALSE)
+```
+:::

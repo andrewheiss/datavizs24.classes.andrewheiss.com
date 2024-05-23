@@ -1,0 +1,8 @@
+library(textdata)
+library(emoji)
+library(modelsummary)
+library(tinytable)
+library(ggiraph)
+library(ggdirectlabel)
+library(geomtextpath)
+library(rsthemes)
