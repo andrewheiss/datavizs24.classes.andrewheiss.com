@@ -283,6 +283,6 @@ grading |>
 ```
 
 
-## Star Wars
+## Recipes
 
-Once you have read this entire syllabus and [the assignments page](/assignment/index.qmd), please [click here](mailto:aheiss@gsu.edu) and e-mail me a picture of a *cute* Star Wars character.^[Baby Yoda, Babu Frik, porgs, etc. are all super fair game.] Brownie points if it's animated. 
+Once you have read this entire syllabus and [the assignments page](/assignment/index.qmd), please [click here](mailto:aheiss@gsu.edu) and e-mail me your favorite recipe. I love cooking ([see here for a feed of some of my cooking adventures](https://bsky.app/search?q=from%3Aandrew.heiss.phd+%23pacooks)) and I'm always on the lookout for new things!
