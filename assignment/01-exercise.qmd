@@ -29,8 +29,8 @@ Before starting this exercise, make sure you complete everything at [the lesson 
 
    ````default
    ---
-   title: "Problem set 1"
-   author: "Put your name here"
+   title: "Introduction to R and the tidyverse"
+   subtitle: "Exercise 1 --- PMAP 8551, Summer 2024"
    format: 
      html:
        toc: true
