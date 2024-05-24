@@ -232,9 +232,7 @@ assignments <- tribble(
   75      , "Mini project 2",
   200     , "Final project"
 ) |>
-  mutate(Percent = Points / sum(Points),
-         Percent = scales::label_percent(accuracy = 1)(Percent)) |>
-  mutate(Group = "Blah")
+  mutate(Percent = Points / sum(Points))
 
 grading <- tribble(
   ~Grade, ~Range,  ~Grade1, ~Range1,
@@ -248,38 +246,28 @@ grading <- tribble(
 ```
 
 ```{r show-assignments-table, echo=FALSE}
-assignments
-# assignments |>
-#   select(Assignment, Points, Percent, Group) |>
-#   group_by(Group) |> 
-#   gt() |> 
-#   sub_missing(missing_text = "---") |> 
-#   grand_summary_rows(
-#     columns = c(Points, Percent), 
-#     fns = list(Total ~ sum(.)),
-#     fmt = list(Total ~ fmt_percent(., columns = Percent, decimals = 0))
-#   )
-# 
-# assignments |>
-#   select(Assignment, Points, Percent) |>
-#   group_by(asdf = 1) |> 
-#   gt() |> 
-#   grand_summary_rows(
-#     columns = c(Points, Percent), 
-#     fns = list(Total ~ sum(.)),
-#     fmt = list(Total ~ fmt_percent(., columns = Percent, decimals = 0))
-#   ) |> 
-#   fmt_percent(columns = Percent, decimals = 1) |> 
-#   tab_style(
-#     locations = list(cells_grand_summary(), cells_stub_grand_summary()), 
-#     style = cell_text(weight = "bold")
-#   ) |> 
-#   opts_theme() |> 
-#   opt_horizontal_padding(2) |>
-#   tab_options(
-#     row_group.as_column = TRUE,
-#     quarto.disable_processing = TRUE
-#   )
+assignments |>
+  select(Assignment, Points, Percent) |>
+  gt() |>
+  sub_missing(missing_text = "---") |>
+  grand_summary_rows(
+    columns = c(Points, Percent),
+    fns = list(Total ~ sum(.)),
+    fmt = list(Total ~ fmt_percent(., columns = Percent, decimals = 0))
+  ) |> 
+  tab_style(
+    locations = list(cells_grand_summary(), cells_stub_grand_summary()),
+    style = cell_text(weight = "bold")
+  ) |>
+  fmt_percent(
+    columns = Percent, decimals = 0
+  ) |> 
+  opts_theme() |>
+  opt_horizontal_padding(2) |>
+  tab_options(
+    row_group.as_column = TRUE,
+    quarto.disable_processing = TRUE
+  )
 ```
 
 ```{r show-grades-table, echo=FALSE}
