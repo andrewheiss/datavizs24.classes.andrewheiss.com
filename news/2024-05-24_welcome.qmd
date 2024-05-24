@@ -1,6 +1,6 @@
 ---
 title: "Welcome to class!"
-date: "2023-08-18T17:02"
+date: "2024-05-24T10:38"
 categories: [getting started]
 ---
 
