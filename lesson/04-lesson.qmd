@@ -32,6 +32,11 @@ When you visualize proportions with ggplot, you'll typically go through a two-st
 1. Summarize the data with {dplyr} (typically with a combination of  `group_by()` and `summarize()`)
 2. Plot the summarized data
 
+::: {.callout-tip}
+### Animations
+
+To help with the intuition behind the dplyr verbs `mutate()`, `group_by()`, and `summarize()`, [go look at these animations](https://www.andrewheiss.com/blog/2024/04/04/group_by-summarize-ungroup-animations/), and come back to them throughout the class.
+:::
 
 ## Manipulating data with {dplyr}
 
