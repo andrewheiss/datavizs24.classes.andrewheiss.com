@@ -35,9 +35,9 @@ There are actually two pipe operators in R, and you'll see both in the wild.
 
 In 99% of cases, the two pipes are the same ([see here for details about their differences](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/); or [see this too](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/)). The magrittr `%>%` is still wildly popular and you'll see code online that uses it. The main downside to the magrittr pipe is that it requires that you load a package to use it. If you run `library(tidyverse)`, you'll have access to it, and in this class you'll load tidyverse 100% of the time, so you can use `%>%` without any problems. 
 
-I switched my R classes away from `%>%` to `|>` starting in January 2024, mostly following the example of Hadley Wickham (inventor of ggplot, dplyr, and pretty much all the tidyverse). The first edition of [*R for Data Science*](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund used the magrittr pipe (`%>%`) extensively, which is partially why it became so popular. In the second edition of *R for Data Science*, though, published in June 2023, they switched to the native pipe (`|>`). I took that as a cue to do the same in my own R work.
+I switched my R classes away from `%>%` to `|>` starting in January 2024, mostly following the example of Hadley Wickham (inventor of ggplot, dplyr, and pretty much all the tidyverse). The first edition of [*R for Data Science*](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund used the magrittr pipe (`%>%`) extensively, which is partially why it became so popular. In [the second edition of *R for Data Science*](https://r4ds.hadley.nz/), though, published in June 2023, they switched to the native pipe (`|>`). I took that as a cue to do the same in my own R work.
 
-So I'm teaching you the native pipe, or `|>`. But don't panic if you see the magrittr pipe, or `%>%`, out there. And feel free to use it too. Again, 99% of the time, it works the same:
+So I'm teaching you the native pipe (`|>`). But don't panic if you see the magrittr pipe (`%>%`) out there. And feel free to use it too. Again, 99% of the time, it works the same:
 
 ```{r}
 # {magrittr} pipe
@@ -49,7 +49,7 @@ c(1, 2, 3, 4, 5) %>% mean()
 c(1, 2, 3, 4, 5) |> mean()
 ```
 
-Just don't mix the two pipes in the same chain of functions. This is bad:
+Just don't mix the two pipes in the same chain of functions. **This is bad**:
 
 ```r
 mpg |> 
@@ -81,9 +81,10 @@ Install the font, then go to Tools > Global Options… > Appearance and change t
 
 ## Pipe keyboard shortcut
 
-In RStudio, you can insert a pipe operator with a keyboard shortcut:^[The "M" here refers to the **m**agrittr pipe]
+In RStudio, you can insert a pipe operator with a keyboard shortcut:
 
-- On macOS: <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>M</kbd>
+- On macOS: <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>M</kbd>^[The "M" here refers to the **m**agrittr pipe]
+
 - On Windows: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>M</kbd>
 
 You can control which kind of pipe is inserted by going to Tools > Global options… > Code > Editing and toggling the "Use native pipe operator" option:
