@@ -263,6 +263,7 @@ website:
             - resource/install.qmd
             - resource/markdown.qmd
             - resource/quarto.qmd
+            - resource/pipes.qmd
             - resource/unzipping.qmd
 
 

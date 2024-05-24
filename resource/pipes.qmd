@@ -1,0 +1,91 @@
+---
+title: "Pipes"
+reference-location: margin
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", collapse = TRUE)
+library(magrittr)
+```
+
+In the primers (and in [Lesson 4](/lesson/04-lesson.qmd)) you were introduced to the pipe operator `|>`, which takes the object on the left of the pipe and passes it as the first argument to the function on the right.
+
+Like, you can find the average of the numbers 1, 2, 3, 4, and 5 like this:
+
+```{r}
+mean(c(1, 2, 3, 4, 5))
+```
+
+Or like this:
+
+```{r}
+c(1, 2, 3, 4, 5) |> mean()
+```
+
+## Pipe styles
+
+There are actually two pipe operators in R, and you'll see both in the wild.
+
+::: {.column-margin}
+![René Magritte, "The Treachery of Images"](img/MagrittePipe.jpg)
+:::
+
+- The `%>%` operator was invented first in 2014 in an [R package named {magrittr}](https://magrittr.tidyverse.org/), a pun on René Magritte's [famous painting of a pipe, "The Treachery of Images"](https://en.wikipedia.org/wiki/The_Treachery_of_Images). 
+- The `|>` operator was added as a native part of R itself with version 4.1.0 in May 2021. It doesn't require any extra packages to use.
+
+In 99% of cases, the two pipes are the same ([see here for details about their differences](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/); or [see this too](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/)). The magrittr `%>%` is still wildly popular and you'll see code online that uses it. The main downside to the magrittr pipe is that it requires that you load a package to use it. If you run `library(tidyverse)`, you'll have access to it, and in this class you'll load tidyverse 100% of the time, so you can use `%>%` without any problems. 
+
+I switched my R classes away from `%>%` to `|>` starting in January 2024, mostly following the example of Hadley Wickham (inventor of ggplot, dplyr, and pretty much all the tidyverse). The first edition of [*R for Data Science*](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund used the magrittr pipe (`%>%`) extensively, which is partially why it became so popular. In the second edition of *R for Data Science*, though, published in June 2023, they switched to the native pipe (`|>`). I took that as a cue to do the same in my own R work.
+
+So I'm teaching you the native pipe, or `|>`. But don't panic if you see the magrittr pipe, or `%>%`, out there. And feel free to use it too. Again, 99% of the time, it works the same:
+
+```{r}
+# {magrittr} pipe
+c(1, 2, 3, 4, 5) %>% mean()
+```
+
+```{r}
+# Native pipe
+c(1, 2, 3, 4, 5) |> mean()
+```
+
+Just don't mix the two pipes in the same chain of functions. This is bad:
+
+```r
+mpg |> 
+  group_by(...) %>%
+  summarize(...) |>
+  filter(...) %>%
+  select(...)
+```
+
+## Pipes and fancy fonts
+
+The `|>` is actually designed to look like a triangle pointing to the left: ▷
+
+But in pretty much all fonts, the `|` character is too tall and doesn't align with the top and bottom of the left side of the `>` character, so it doesn't *quite* look right.
+
+If you want to be fancy and cool, you can [download and install a special programming font named Fira Code](https://github.com/tonsky/FiraCode) that uses some typographic magic to make certain combinations of characters appear differently in RStudio. 
+
+Like, check out the `==` and `!=` and `<=` and `|>` characters normally:
+
+![Sample code with a normal font](img/normal-font.png)
+
+And now look at them with Fira Code, where they're magically transformed into fancier combinations:
+
+![Sample code with Fira Code](img/fira-code.png)
+
+The underlying code is the same—the `!=` combination isn't actually converted to a ≠ character. It just looks that way.
+
+Install the font, then go to Tools > Global Options… > Appearance and change the editor font if you want to use Fira Code in RStudio.
+
+## Pipe keyboard shortcut
+
+In RStudio, you can insert a pipe operator with a keyboard shortcut:^[The "M" here refers to the **m**agrittr pipe]
+
+- On macOS: <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>M</kbd>
+- On Windows: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>M</kbd>
+
+You can control which kind of pipe is inserted by going to Tools > Global options… > Code > Editing and toggling the "Use native pipe operator" option:
+
+![RStudio pipe options](img/pipe-options.png)

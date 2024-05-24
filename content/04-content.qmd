@@ -30,10 +30,6 @@ slide_details <- tibble::tribble(
 - {{< fa brands twitter >}} [Tweet](https://twitter.com/jburnmurdoch/status/1238914490772701185) and [Twitter thread](https://twitter.com/jburnmurdoch/status/1242904596856614912) from John Burn-Murdoch on why the *Financial Times* doesn't use population-adjusted numbers in their COVID-19 tracking charts
 - {{< fa brands youtube >}} [Video from the *Financial Times* about the design decisions behind their COVID-19 tracking charts](https://www.youtube.com/watch?v=4lm3MWTVAK0)
 
-### Recommended
-
-- {{< fa arrow-up-right-from-square >}} [See how to create your own COVID-19 tracking chart with R](https://robjhyndman.com/hyndsight/logratios-covid19/)
-
 ### Possible questions to reflect on
 
 ::: {.callout-warning}

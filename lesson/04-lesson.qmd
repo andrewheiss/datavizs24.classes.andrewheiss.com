@@ -304,6 +304,12 @@ filter(mutate(gapminder, log_gdpPercap = log(gdpPercap)),
 
 That works too, but it gets *really* complicated once you have even more functions, and it's hard to keep track of which function's arguments go where. I'd avoid doing this entirely.
 
+::: {.callout-important}
+### Pipe styles
+
+See [this short "Pipes" guide](/resource/pipes.qmd) to learn about R's two different styles of pipe: `|>` and `%>%`
+:::
+
 One really nice solution is to use a pipe, or `|>`. **The pipe takes an object on the left and passes it as the first argument of the function on the right**.
 
 ```{r pipe-example, eval=FALSE}
