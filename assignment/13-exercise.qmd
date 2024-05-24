@@ -27,11 +27,11 @@ And as always, if you're struggling, *please* talk to me and use Slack and talk 
 
 ## Instructions
 
-1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `exercise-11.Rproj`: [{{< fa file-archive >}} `13-exercise.zip`](/projects/13-exercise.zip)
+1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `exercise-13.Rproj`: [{{< fa file-archive >}} `13-exercise.zip`](/projects/13-exercise.zip)
 
-   (Alternatively, you can open the project named "Exercise 11" on Posit.cloud and complete the assignment in your browser without needing to install anything. [This link should take you to the project](https://posit.cloud/spaces/401677/content/6337013)—if it doesn't, log in and look for the project named "Exercise 11".)
+   (Alternatively, you can open the project named "Exercise 11" on Posit.cloud and complete the assignment in your browser without needing to install anything. [This link should take you to the project](https://posit.cloud/spaces/517869/content/8250357)—if it doesn't, log in and look for the project named "Exercise 13".)
 
-2. Rename the Quarto file named `your-name_exercise-11.qmd` to something that matches your name and open it in RStudio.
+2. Rename the Quarto file named `your-name_exercise-13.qmd` to something that matches your name and open it in RStudio.
 
 3. Complete the tasks given in the Quarto file. 
 

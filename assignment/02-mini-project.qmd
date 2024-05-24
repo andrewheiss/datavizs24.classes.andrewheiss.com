@@ -25,6 +25,8 @@ Here's what you need to do:
 
 1. **Create** a new RStudio project and place it on your computer somewhere. Open that new folder in Windows File Explorer or macOS Finder (however you navigate around the files on your computer), and create two subfolders there named `data` and `output`.
 
+   - (Alternatively, you can open the project named "Mini project 2" on Posit.cloud and complete the assignment in your browser without needing to install anything. [This link should take you to the project](https://posit.cloud/spaces/517869/content/8250420)—if it doesn't, log in and look for the project named "Mini project 2".)
+
 2. **Download** the Department of Homeland Security's annual count of people granted refugee status between 2006-2015:
 
    [{{< fa file-csv >}} DHS refugees, 2006-2015](/files/data/external_data/refugee_status.csv)

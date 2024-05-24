@@ -60,6 +60,8 @@ Here's what you'll need to do:
 
 Remember to follow Quarto etiquette rules and style—don't have it output extraneous messages or warnings, include summary tables in nice tables, adjust the dimensions for your figures, and remove the placeholder text that's in the template already (i.e. I don't want to see stuff like "Describe and show how you cleaned and reshaped the data" in the final report.)
 
+You'll need to create an RStudio Project folder to organize all your content, just like with all the previous exercises and mini projects.^[There's also [an empty Posit.Cloud project here](https://posit.cloud/spaces/517869/content/8250353) if you want.]
+
 **You should [download a full example of what a final project might look like](/projects/example_final.zip)** (but don't make your final combined visualization look exactly like this—show some creativity!)
 
 
