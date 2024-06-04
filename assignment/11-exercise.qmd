@@ -12,7 +12,7 @@ For this exercise, you'll use whatever data you want to make a plot and make it 
 ::: {.callout-warning}
 ## THIS IS DIFFERENT
 
-This exercise is a little different from past ones because **you will not knit to PDF or Word**. Pay attention to the instructions below.
+This exercise is a little different from past ones because **you will not render to PDF or Word**. Pay attention to the instructions below.
 :::
 
 [The example for this week's session](/example/11-example.qmd) will be helpful as you tinker with `ggplotly()`, and [the resources listed at the bottom of the example](/example/11-example.qmd#making-a-dashboard-with-flexdashboard) will be helpful for making a dashboard.
@@ -38,15 +38,15 @@ And as always, if you're struggling, *please* talk to me and use Slack and talk 
 
    Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or [the example page](/example/11-example.qmd)—don't try to write everything from scratch!).
 
-4. **Here's where this is all different this time.** You will *not* upload a knitted PDF or Word file to iCollege, since those can't handle interactivity. Instead, do this:
+4. **Here's where this is all different this time.** You will *not* upload a rendered PDF or Word file to iCollege, since those can't handle interactivity. Instead, do this:
 
-   1. Knit the document with Tasks 1 and 2 in it to HTML and publish it to RPubs using the "Publish document" menu in the preview of the knitted file. Take note of the URL.
+   1. Render the document with Tasks 1 and 2 in it to HTML and publish it to RPubs using the "Publish document" menu in the preview of the rendered file. Take note of the URL.
 
 ```{r render-button, echo=FALSE, out.width="50%", indent="   "}
 knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
 ```
 
-   2. Knit the dashboard from Task 3 to HTML and publish it to RPubs using the same menu. Take note of the URL.
+   2. Render the dashboard from Task 3 to HTML and publish it to RPubs using the same menu. Take note of the URL.
 
    3. In iCollege, paste the two URLs into the submission form for exercise 10 following this template:
 

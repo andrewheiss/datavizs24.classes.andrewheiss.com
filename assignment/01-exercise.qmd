@@ -94,13 +94,13 @@ knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error 
 
 3. Follow the instructions for the three chunks of code.
 
-4. Knit your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install.qmd#install-tinytex)). Use the "Knit" menu:
+4. Render your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install.qmd#install-tinytex)). Use the "Render" menu:
 
 ```{r render-button, echo=FALSE, out.width="50%", indent="   ", fig.align="center"}
 knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
 ```
 
-5. Upload the knitted document to iCollege.
+5. Upload the rendered document to iCollege.
 
 6. `r emoji::emoji("tada")` Party! `r emoji::emoji("tada")`
 

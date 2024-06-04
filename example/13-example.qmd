@@ -75,7 +75,7 @@ fred_raw <- tq_get(c("RSXFSN",  # Advance retail sales
 
 Downloading data from FRED every time you knit will get tedious and take a long time (plus if their servers are temporarily down, you won't be able to get the data). As with the World Bank data we used, it's good practice to save this raw data as a CSV file and then work with that.
 
-Since we care about reproducibility, we still want to include the code we used to get data from FRED, we just don't want it to actually run. You can include chunks but not run them by setting `eval=FALSE` in the chunk options. In this little example, we show the code for downloading the data, but we don't evaluate the chunk. We then include a chunk that loads the data from a CSV file with `read_csv()`, but we don't include it (`include=FALSE`). That way, in the knitted file we see the `WDI()` code, but in reality it's loading the data from CSV. Super tricky.
+Since we care about reproducibility, we still want to include the code we used to get data from FRED, we just don't want it to actually run. You can include chunks but not run them by setting `eval=FALSE` in the chunk options. In this little example, we show the code for downloading the data, but we don't evaluate the chunk. We then include a chunk that loads the data from a CSV file with `read_csv()`, but we don't include it (`include=FALSE`). That way, in the rendered file we see the `tq_get()` code, but in reality it's loading the data from CSV. Super tricky.
 
 ````markdown
 I first download data from FRED:

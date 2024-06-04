@@ -74,7 +74,7 @@ Downloading data from the World Bank every time you knit will get tedious and ta
 write_csv(wdi_raw, "data/wdi_comparisons.csv")
 ```
 
-Since we care about reproducibility, we still want to include the code we used to get data from the World Bank, we just don't want it to actually run. You can include chunks but not run them by setting `eval=FALSE` in the chunk options. In this little example, we show the code for downloading the data, but we don't evaluate the chunk. We then include a chunk that loads the data from a CSV file with `read_csv()`, but we don't include it (`include=FALSE`). That way, in the knitted file we see the `WDI()` code, but in reality it's loading the data from CSV. Super tricky.
+Since we care about reproducibility, we still want to include the code we used to get data from the World Bank, we just don't want it to actually run. You can include chunks but not run them by setting `eval=FALSE` in the chunk options. In this little example, we show the code for downloading the data, but we don't evaluate the chunk. We then include a chunk that loads the data from a CSV file with `read_csv()`, but we don't include it (`include=FALSE`). That way, in the rendered file we see the `WDI()` code, but in reality it's loading the data from CSV. Super tricky.
 
 ````markdown
 I first download data from the World Bank:

@@ -21,7 +21,7 @@ These resources are also really really helpful:
 
 ## R in the wild
 
-A popular (and increasingly standard) way for sharing your analyses and visualizations is to post an annotated explanation of your process somewhere online. RStudio allows you to publish knitted HTML files directly to [RPubs](http://rpubs.com/), but you can also post your output to a blog or other type of website. Reading these kinds of posts is one of the best ways to learn R, since they walk you through each step of the process *and* show the code and output.
+A popular (and increasingly standard) way for sharing your analyses and visualizations is to post an annotated explanation of your process somewhere online. RStudio allows you to publish rendered HTML files directly to [RPubs](http://rpubs.com/), but you can also post your output to a blog or other type of website. Reading these kinds of posts is one of the best ways to learn R, since they walk you through each step of the process *and* show the code and output.
 
 Here are some of the best examples I've come across:
 

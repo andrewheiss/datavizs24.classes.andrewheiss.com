@@ -47,7 +47,7 @@ knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error 
 
    Make sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.
 
-1. When you're all done, click on the "Knit" button at the top of the editing window and create a Word or PDF version (if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege. **Do not upload a knitted HTML file** (they don't work on iCollege).
+1. When you're all done, click on the "Render" button at the top of the editing window and create a Word or PDF version (if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege. **Do not upload a rendered HTML file** (they don't work on iCollege).
 
 ```{r render-button, echo=FALSE, out.width="50%", indent="   ", fig.align="center"}
 knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
