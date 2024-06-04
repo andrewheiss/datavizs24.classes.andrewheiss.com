@@ -1,0 +1,19 @@
+---
+title: "Alternative (and better) site for primers"
+date: "2024-06-04T12:32"
+categories: [class details]
+---
+
+Hi everyone!
+
+Some of you have been running into some issues working through the Posit Primers for lesson 1. There are some technical reasons for that—the primers are interactive documents that are hosted on a server running something called [Shiny](https://shiny.posit.co/) that lets you run R from your browser, but Shiny can be slow and clunky, as you've seen.
+
+I've been working on making [my own version](https://r-primers.andrewheiss.com/) of the Posit Primers with a [different, newer way of running R in your browser](https://quarto-webr.thecoatlessprofessor.com/), and it's lightning-fast and really stable. I only have the first set of Primers finished for now ("Data visualization basics"), but you can access them at <https://r-primers.andrewheiss.com/02-viz-basics/01-welcome.html>
+
+The others will be up ASAP.
+
+---
+
+And don't worry—we only use these Posit Primers for sessions 1 and 3, and all the other sessions will be far more stable (and contained at the main class website, not at a separate site like this).
+
+Some quick background about these primers—the Posit company used to host them on their servers, but stopped supporting them in December 2023. They made the code for them open source, though, so I made a copy and put it on my own server (which is what you've been using). I didn't write these primers—the authors of R for Data Science did—but I find they're one of the best introductions to R and the tidyverse, which is why I'm having you work through them.

@@ -1,0 +1,46 @@
+---
+title: "The 30-minute rule and how to ask for help"
+date: "2024-06-04T09:51"
+categories: [advice]
+---
+
+When working through the examples or exercises, you will get stuck. It's inevitable.
+
+You **absolutely** can (and should) reach out when stuck. I'm super responsive on Slack and e-mail. If you ask a question on the #help channel in Slack, others can help too. No question is too tricky or embarrassing, I promise. Computers are extraordinarily literal and tiny typos will often mess you up for a long time—I've lost countless time because of missing commas and misspelled words (curse you `lenght()`). Please feel comfortable reaching out.
+
+I’m a big believer in the 30-minute rule: 
+
+::: {.callout-tip}
+### The 30-minute rule
+
+If you're stuck on an issue for more than 30 minutes, **stop**, take a break, and ask for help somewhere.
+:::
+
+There are a few easy guidelines to remember when asking for help:
+
+1. Be kind.
+
+2. Ask questions with as complete information as possible. Do not just post a photo from your phone and say something like "help?" or "my code isn't working" and that's it—provide more background (it's hard to read your computer's mind). 
+
+   Explain specifically what you're trying to do and provide code when possible. You can actually format R code on Slack if you click on the little lightning icon in the bottom left of the typing area and search for "text snippet"—that'll open a dialog that will let you paste in text and add R syntax highlighting. You can also paste your code between triple backticks on Slack and it'll format it in monospaced font (though not with the neat syntax highlighting that you get when using Slack's text snippet thing):
+
+	````default
+	```
+	ggplot(blah) + geom_point()
+	```
+	````
+
+	You can also take screenshots to *supplement* your question (use ⌘+shift+4 on macOS to save a screenshot to your Desktop, or ⌘+⌥+shift+4 to save a screenshot directly to the clipboard; use Windows+shift+S on Windows to save a screenshot directly to the clipboard). Do not send a screenshot as your entire question though (it's very tempting to just post a picture of an error and hope that someone can fix it)—provide context. Screenshots are helpful, but code/text is better—it's harder for people to get the code out of a screenshot in Slack and into RStudio on their computer to troubleshoot, since you can't copy/paste from an image.
+
+3. Try making your question a **repr**oducible **ex**ample (or reprex). You'll learn more about reprexes in session 8, but it's an incredibly important skill to have. [See here for some resources about it](/content/08-content.qmd#reproducible-examples)
+
+4. **Ask in *public*.** It is very tempting to send me private messages on Slack for assistance, and that's great and I'm happy to respond like that. However, one way to help [build a stronger community](/news/2024-06-04_building-community.qmd) for this class is to ask questions in public in the different `#help` channels instead. There are a couple reasons for this:
+
+   - **It reduces duplication**: Many of you will have almost identical questions and I often end up copying and pasting my answers between different private conversations asking for help. Having those questions and answers in the public `#help` channels instead will let you get answers to common questions faster
+   - **It allows *you* to help**: Some of you have R experience already, and even if you don't, as the semester goes on, you'll get more comfortable with it and will start being able to answer your classmates' questions. You might have just fixed a similar issue in a past exercise, or you might be able to spot a typo in their code, or you might otherwise know how to help. Step in and help! Slack is for building a community, not just for getting assistance from me.
+
+And that's it. **Ask questions in ways that will help answerers answer them and be nice about it. When answering questions, be nice about it. Ask lots of questions. Answer lots of questions. Do it all in public.**
+
+Once again, *do not suffer in silence*. I've had past students tell me that's like the one thing they'll remember from my classes—do not suffer in silence. I mean it, and I'll keep saying it throughout the semester (because often in your past courses and degrees, you've been discouraged from reaching out or from building communities or whatever—that is *not* the case here).
+
+Remember that you can always sign up for a time to meet with me at [my Calendly page](https://calendly.com/andrewheiss/)! I'm also on Slack and accessible via e-mail!

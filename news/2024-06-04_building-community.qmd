@@ -1,0 +1,39 @@
+---
+title: "Building community"
+date: "2024-06-04T09:48"
+categories: [advice]
+---
+
+The most common question from the pre-class survey was some variation of this:
+
+> I have no background in programming or in R—will I be able to learn things and succeed in this class?
+
+Absolutely.
+
+I’ve designed this class to be accessible by people with any level of R experience. If you’ve never used R—awesome! If you’ve been using R for years—awesome! You’ll all learn new skills.
+
+To get the most out of this class and minimize the inevitable frustration that comes with learning a programming language, **do not try to do everything on your own**. Community is essential.
+
+### Class community
+
+Throughout these pandemic years I've been studying the research on online teaching to see how to make my online classes as successful as possible. One almost universal key to success I've found is that learning requires social interaction to be successful [@Glazier:2016]. In fact, **one of the greatest predictors of success is whether students build relationships with their classmates and their professor.**
+
+This is true for **both** online classes and face-to-face classes! It's entirely possible to take a face-to-face class and have almost no social interaction. The worst, most useless class I ever took as an undergraduate was a required Intro to US History class that met twice a week for 2 hours in a massive auditorium with 900 (!!!) other students. It was awful and I learned nothing.
+
+So, interact with me and your classmates! Don't lurk in silence in the shadows. *Do* reach out and talk to your classmates (and me!).
+
+To that end, one of the best ways to get to know each other is to help each other. Ask questions on Slack. If you see someone's question there and you know how to help, answer! 
+
+You can also work on exercises and projects in groups if you want. Use Webex or Zoom to share screens with each other during calls so you can see what you're doing. In the real programming world, a common technique for working on code is [pair programming](https://en.wikipedia.org/wiki/Pair_programming), where two people work on the same script. If we were meeting in class, we'd do this face-to-face, working during class in groups of 2–3 with me walking around and helping. **Feel free to replicate that experience** and work with others. It's not cheating! (As long as you don't turn in identical work)
+
+### Online community
+
+One of the great parts about the online R community is that the team at Posit has actually hired people to help promote community norms. Like that's their whole job—community evangelist. The R world is probably one of the nicest corners of the programming internet because of these norms—there's an emphasis on helping beginners, being kind and respectful, and cheerfully helping as much as possible. Watch the `#rstats` hashtag on [Bluesky](https://bsky.app/hashtag/RStats), Mastodon, or [Twitter / X](https://twitter.com/hashtag/rstats), look at the "r" tag on StackOverflow, and look at discussions at the [Posit Community](https://community.rstudio.com/) and you'll see kindness in action.
+
+This was not always the case. 10ish years ago, before the RStudio/Posit people made a concerted effort to create community, the online R world was pretty mean and toxic, with forums run by a few really grumpy statisticians who'd belittle you if you asked a poorly worded question. It was awful. That kind of attitude often still persists in other languages (hooo boy try asking a beginner question about Python at StackOverflow 😬), but the R world has tried really hard to be welcoming. 
+
+I embrace that attitude when teaching R, and I encourage you all to do the same. Reach out for help early and often. Do not suffer in silence. Do not spend hours and hours stuck on an issue before reaching out for help.
+
+---
+
+Help make this semester fantastic by talking, reaching out, and otherwise socially interacting!

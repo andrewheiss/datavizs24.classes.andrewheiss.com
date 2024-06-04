@@ -1,0 +1,46 @@
+---
+title: "Pre-class FAQs"
+date: "2024-06-04T09:54"
+categories: [FAQs]
+---
+
+Thanks to everyone who has filled out the pre-class welcome survey (see the link in your e-mail)! I’m excited to get to know you all more this semester!
+
+Lots of you had similar questions and concerns, so I’ve consolidated the common ones here in a list of FAQs. 
+
+
+### Can I reach out if I have questions?
+
+***ABSOLUTELY***. DO NOT ATTEMPT TO DO THIS CLASS WITHOUT EVER ASKING A SINGLE QUESTION.
+
+Make sure you read [this about building a community](/news/2024-06-04_building-community.qmd) and [this about the 30-minute rule and how to ask for help](/news/2024-06-04_reaching-out-when-stuck.qmd).
+
+
+### How hard will it be to reach you? Will you have regular office hours?
+
+Hopefully not hard at all! I'm extremely responsive on Slack and e-mails.
+
+I don’t have a set time every week for student hours ([see here for why I don’t call them office hours](/syllabus.qmd#student-hours)). Instead, I use an appointment system. If you want to meet with me online, visit [my Calendly page](https://calendly.com/andrewheiss/) and sign up for a slot. There’s also a link to it on the [homepage](/) and [syllabus page](/syllabus.qmd) of the class website.
+
+I'll also generally be on campus on Fridays (in June) and Mondays (in July) if you want to meet IRL. Use the in-person slot at [Calendly](https://calendly.com/andrewheiss/) to sign up for a time to meet me on campus.
+
+
+### Will we cover {X}? 
+
+- **Geospatial data and visualizations?** [Absolutely!](/content/12-content.qmd) Maps are one of my favorite kinds of visualization and [we have a whole session on them](/example/12-example.qmd).
+- **Interactive visualizations?** [Yep!](/content/10-content.qmd)
+- **Animated visualizations?** Not directly, but we’ll briefly mention [the {gganimate} package](https://gganimate.com/), which is surprisingly easy to use—it’s just regular ggplot code with a few extra lines to animate it
+
+
+### Do we really have four assignments due every week?!
+
+Sort of, yeah. This is a summer class, so by nature it's more accelerated. There are 15 sessions—during a normal semester, we'd cover one session per week, but during the summer, we cover two per week.
+
+For each session, you'll (1) write a short reflection about the readings, and (2) complete some sort of exercise. You'll do both of these in the same document, so you'll only ever really turn one thing in per session. So at a technical level, yes, there are four assignments, but they're paired up so you really only have two things to turn in each week.
+
+
+### I don’t have a background in anything related to PMAP (public management and policy)—will I be lost?
+
+That’s 1000% fine! I’ve designed this class to be accessible and useful for people working with any kind of data. Lots of the examples we’ll play with will often be related to political science-y things, but not always. And the kind of data doesn’t actually matter. When learning new statistical programming and visualization tools and techniques, the industry standard is to work with toy datasets. For instance, in your first exercise you’ll make a plot of car mileage. I know *nothing* about cars at all, but I (along with everyone else in the R world) use that dataset all the time for quick little tests of plots or models or code or whatever, since it’s built into R. I also often use [data about penguins](https://allisonhorst.github.io/palmerpenguins/) and lots of  other domains in assignments and examples.
+
+Don’t worry about the precise nature of the data. [In your final project](/assignment/final-project.qmd), you’ll make visualizations with whatever data you want. For all the other assignments and exercises and mini-projects, just go with the data I’ve provided. It’s all actual real world data (refugee inflows, unemployment, election results, texts of books from the 19th century, counts and locations of rat sightings in NYC, etc.). If it’s not related to your field, don’t worry—the principles of code and data visualization and graphic design still apply.
