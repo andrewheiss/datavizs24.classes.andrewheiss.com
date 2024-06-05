@@ -17,12 +17,12 @@ You'll learn some of the basics of R, as well as some powerful methods for manip
 Complete these primers. It seems like there are a lot, but they're short and go fairly quickly (especially as you get the hang of the syntax). Also, **I have no way of seeing what you do or what you get wrong or right**, and that's totally fine! If you get stuck and want to skip some (or if it gets too easy), go right ahead and skip them!
 
 - **The Basics**
-	- [Visualization Basics](https://andrewheiss.shinyapps.io/ath-primers-basics-01-visualization/)
-	- [Programming Basics](https://andrewheiss.shinyapps.io/ath-primers-basics-02-programming/)
+	- [Visualization Basics](https://r-primers.andrewheiss.com/basics/01-visualization-basics/)
+	- [Programming Basics](https://r-primers.andrewheiss.com/basics/02-programming-basics/)
 - **Work with Data**
-	- [Working with Tibbles](https://andrewheiss.shinyapps.io/ath-primers-transform-data-01-tibbles/)
-	- [Isolating Data with dplyr](https://andrewheiss.shinyapps.io/ath-primers-transform-data-02-isolating/)
-	- [Deriving Information with dplyr](https://andrewheiss.shinyapps.io/ath-primers-transform-data-03-deriving/)
+	- [Working with Tibbles](https://r-primers.andrewheiss.com/transform-data/01-tibbles/)
+	- [Isolating Data with dplyr](https://r-primers.andrewheiss.com/transform-data/02-isolating/)
+	- [Deriving Information with dplyr](https://r-primers.andrewheiss.com/transform-data/03-deriving/)
 
 The content from these primers comes from the (free and online!) book [*R for Data Science* by Garrett Grolemund and Hadley Wickham](https://r4ds.hadley.nz/). I highly recommend the book as a reference and for continuing to learn and use R in the future (like running regression models and other types of statistical analysis)
 

@@ -17,3 +17,18 @@ The others will be up ASAP.
 And don't worry—we only use these Posit Primers for sessions 1 and 3, and all the other sessions will be far more stable (and contained at the main class website, not at a separate site like this).
 
 Some quick background about these primers—the Posit company used to host them on their servers, but stopped supporting them in December 2023. They made the code for them open source, though, so I made a copy and put it on my own server (which is what you've been using). I didn't write these primers—the authors of R for Data Science did—but I find they're one of the best introductions to R and the tidyverse, which is why I'm having you work through them.
+
+---
+
+### Update!
+
+::: {.small}
+**Updated**  
+Tuesday June 4, 2024 at 6:47 PM
+:::
+
+Hi everyone!
+
+Good news—all the primers for Lesson 1 are now on a [far more reliable site](https://r-primers.andrewheiss.com/). If you've been running into issues previously, use that site instead. I've updated [all the links at Lesson 1](/lesson/01-lesson.qmd) to point to the new site (refresh the page to make sure you're getting the latest links)
+
+There will also be a few primers in [Lesson 3](/lesson/03-lesson.qmd). Those aren't up at the new site yet, but they will be soon, and then you'll never need to contend with that old Shiny server.
