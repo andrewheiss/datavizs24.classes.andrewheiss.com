@@ -15,21 +15,21 @@ For the first part of this week's lesson, you need to work through Posit's intro
 It seems like there are a lot, but they're short and go fairly quickly (especially as you get the hang of the `ggplot()` syntax). Complete these:
 
 - **Visualize Data**
-  - [Exploratory Data Analysis](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-01-eda/)
-  - [Bar Charts](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-02-bar-charts/)
-  - [Histograms](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-03-histograms/)
-  - [Boxplots and Counts](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-04-boxplots/)
-  - [Scatterplots](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-05-scatterplots/)
-  - [Line plots](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-06-line-graphs/)
-  - [Overplotting and Big Data](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-07-overplotting/)
-  - [Customize Your Plots](https://andrewheiss.shinyapps.io/ath-primers-visualize-data-08-customize/)
+  - [Exploratory data analysis](https://r-primers.andrewheiss.com/visualize-data/01-eda/)
+  - [Bar Charts](https://r-primers.andrewheiss.com/visualize-data/02-bar-charts/)
+  - [Histograms](https://r-primers.andrewheiss.com/visualize-data/03-histograms/)
+  - [Boxplots and counts](https://r-primers.andrewheiss.com/visualize-data/04-boxplots/)
+  - [Scatterplots](https://r-primers.andrewheiss.com/visualize-data/05-scatterplots/)
+  - [Line plots](https://r-primers.andrewheiss.com/visualize-data/06-line-graphs/)
+  - [Overplotting and big Data](https://r-primers.andrewheiss.com/visualize-data/07-overplotting/)
+  - [Customize your plots](https://r-primers.andrewheiss.com/visualize-data/08-customize/)
 
 
 ## Part 2: Reshaping data with {tidyr}
 
-For the last part of this week's lesson, you'll work through just one RStudio primer to learn how to use the {tidyr} package to reshape data from wide to long and back to wide.
+For the last part of this week's lesson, you'll work through just one primer to learn how to use the {tidyr} package to reshape data from wide to long and back to wide.
 
 Complete this:
 
 - **Tidy Your Data**
-  - [Reshape Data](https://andrewheiss.shinyapps.io/ath-primers-tidy-data-01-reshape/)
+  - [Reshape Data](https://r-primers.andrewheiss.com/tidy-data/01-reshape-data/)
