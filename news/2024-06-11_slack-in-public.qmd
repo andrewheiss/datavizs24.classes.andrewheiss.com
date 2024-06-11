@@ -1,0 +1,18 @@
+---
+title: "Slack in public"
+date: "2024-06-11T12:38"
+categories: [advice]
+toc-depth: 5
+---
+
+One reminder regarding Slack: lots of you have been sending me private messages there for assistance, and that's great and I'm happy to respond like that. However, one way to help build a stronger community for this class is to ask questions in public in the `#help` channel instead. There are a couple reasons for this:
+
+1. **It reduces duplication**: Many of you have had almost identical questions and I've been able to copy/paste screenshots between different private conversations asking for help. At one point last week, I was actually chatting to five of you simultaneously with the same exact questions :)
+
+   Having those questions and answers in `#help` instead will let you get answers to common questions faster.
+
+2. **It allows *you* to help**: Some of you have R experience already, and even if you don't, as the summer goes on, you'll get more comfortable with it and will start being able to answer your classmates' questions. You might have just fixed a similar issue in a past exercise, or you might be able to spot a typo in their code, or you might otherwise know how to help. Step in and help! Slack is for building a community, not just for getting assistance from me.
+
+You might feel apprehensive about asking in public. Don't worry: I can assure you that there are no dumb R questions. If you have a question about something, someone else does too!
+
+Keep [the guidelines to building community](/news/2024-06-04_building-community.qmd) in mind and ask in public!

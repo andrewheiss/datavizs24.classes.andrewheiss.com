@@ -1,0 +1,315 @@
+---
+title: "Making cleaner, nicer Quarto documents"
+date: "2024-06-11T12:31"
+categories: [advice]
+toc-depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.height = 6 * 0.618, 
+  fig.align = "center", 
+  out.width = "90%",
+  collapse = TRUE
+)
+```
+
+Hi everyone!
+
+Now that you've finished your first couple exercises, I have a bunch of helpful tips to make sure your documents look as nice and readable as possible. Here we go!
+
+
+### Render often
+
+Don’t wait until you’ve finished typing your entire document before rendering. Render as HTML occasionally to make sure all your code runs from a fresh session and to make sure all the extra warnings and messages and any other strange output is taken care of.
+
+Even if your final document won’t be an HTML file, I recommend rendering as HTML often because (1) it’s fast and (2) you can see the output in an easily-refreshable web browser immediately. Render as HTML often. Then at the end, once you know everything is working right and the document looks nice and clean, render as PDF or Word or whatever your final output will be.
+
+
+### Check for broken code chunks
+
+Make sure all your R chunks *start* **and** *end* with triple backticks:
+
++-----------------------------------+-----------------------------------+
+| Bad                               | Good                              |
++===================================+===================================+
+| ```                               | ````                              |
+| Here's some text explaining stuff | Here's some text explaining stuff |
+|                                   |                                   |
+| ```{{r}}                          | ```{{r}}                          |
+| # Here's some R code              | # Here's some R code              |
+| ggplot(...)                       | ggplot(...)                       |
+|                                   | ```                               |
+| And here's some more text.        |                                   |
+| ```                               | And here's some more text.        |
+|                                   | ````                              |
++-----------------------------------+-----------------------------------+
+
+This can be a little tricky to see sometimes if you use the visual editor, since it only shows the first line of the chunk and actually hides the backticks:
+
+![](img/visual-editor.png){width=65% fig-align="center" .border .border-1 .shadow-sm}
+
+If you notice that your document is looking funny, switch to the source editor and make sure the chunk ends with triple backticks:
+
+![](img/source-editor.png){width=65% fig-align="center" .border .border-1 .shadow-sm}
+
+### Check that your text looks okay
+
+When rendering, you should also check your text to make sure it looks okay. Here are some common issues that you’ll see with your text:
+
+#### Headings that aren’t headings
+
+Often you’ll want to make a heading for one of your sections and you’ll type this:
+
+``` default
+#Task 1: Reflection
+```
+
+When you render that, though, it’ll look like this:
+
+> #Task 1: Reflection
+
+That’s not a heading—that’s just a regular paragraph. For a `#`-style heading to turn into an actual heading, you need a space after the `#` and an empty line after the heading text:
+
+``` default
+# Task 1: Reflection
+
+Some text
+
+## A subheading
+
+Some more text
+```
+
+#### Paragraphs that aren’t paragraphs
+
+You’re used to indenting paragraphs in Word or Google Docs. First-line indentation is a normal thing with word processors.
+
+Indenting lines is **unnecessary** with Markdown and will mess up your text.
+
+For example, let’s say you type something like this:
+
+``` default
+    It was the best of times, it was the worst of times, it was the age of 
+wisdom, it was the age of foolishness, it was the epoch of belief, it was the 
+epoch of incredulity, it was the season of Light, it was the season of Darkness, 
+it was the spring of hope, it was the winter of despair, we had everything 
+before us, we had nothing before us, we were all going direct to Heaven, we were 
+all going direct the other way—in short, the period was so far like the present 
+period, that some of its noisiest authorities insisted on its being received, 
+for good or for evil, in the superlative degree of comparison only.
+
+    There were a king with a large jaw and a queen with a plain face, on the 
+throne of England; there were a king with a large jaw and a queen with a fair 
+face, on the throne of France. In both countries it was clearer than crystal to 
+the lords of the State preserves of loaves and fishes, that things in general 
+were settled for ever. 
+```
+
+That looks like Word-style text, with indented paragraphs. When you render it, though, it’ll turn into code-formatted monospaced text that runs off the edge of the page:
+
+>     It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.
+>
+>     There were a king with a large jaw and a queen with a plain face, on the throne of England; there were a king with a large jaw and a queen with a fair face, on the throne of France. In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled for ever. 
+
+That’s because Markdown treats anything that is indented with four spaces as *code*, not as text.
+
+**You shouldn’t indent your text.** Instead, add an empty line between each paragraph to separate them.
+
+
+#### Lists that aren’t lists
+
+Due to esoteric historical reasons, the end of lines (i.e. what happens when you press <kbd>enter</kbd> when typing) is different on Macs and Windows. I use a Mac, and I typed the exercise templates on a Mac, so they have Mac-style line endings. That means that on Windows, you’ll sometimes see text that looks normal like this:
+
+``` default
+- Here's a list
+- Stuff goes here
+- Neato
+```
+
+That should theoretically turn into a list, but when you render it, you see this:
+
+> - Here’s a list - Stuff goes here - Neato
+
+That’s not a list! The easiest way to fix that is to delete the line break at the end of “list” in that first line and then press enter (and so on), so that it turns in to this when rendering:
+
+> - Here's a list
+> - Stuff goes here
+> - Neato
+
+
+### Don’t install packages in your document
+
+Make sure you don't include code to install packages in your Quarto files. Like, don't include `install.packages("ggtext")` or whatever. If you do, R will reinstall that package every time you render your document, which is excessive. All you need to do is load the package with `library()`
+
+To help myself remember to not include package installation code in my document, I make an effort to either install packages with my mouse by clicking on the “Install” button in the Packages panel in RStudio, or only ever typing (or copying/pasting) code like `install.packages("whatever")` directly in the R console and never putting it in a chunk.
+
+
+### Clean up warnings and messages
+
+Ideally, your document shouldn’t have any errors, warnings, or messages in it. Some packages are talkative, like {tidyverse}:
+
+```{r load-libraries}
+library(tidyverse)
+```
+
+Some functions are talkative, like `summarize()` after working on more than one group:
+
+```{r mpg-grp-summarize}
+mpg |> 
+  group_by(year, drv) |> 
+  summarize(avg = mean(hwy))
+```
+
+Or `geom_smooth()`:
+
+```{r mpg-smooth}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth()
+```
+
+When you have code that you know will return some sort of message, add `message=FALSE` to the chunk options for it. When you have code that you know will make some sort of warning, (1) try to fix it so that the warning doesn’t happen, or (2) add `warning=FALSE` to the chunk options for it.
+
+```{r}
+#| echo: fenced
+#| label: load-packages
+#| warning: false
+#| message: false
+
+library(tidyverse)
+```
+
+Rendering often and scrolling through the rendered document will help you check that you don’t have any extra output like warnings, messages, and errors too.
+
+
+### Global chunk options
+
+You can control the settings for all the chunks in your document by using `knitr::opts_chunk$set()`. You can use any {knitr} chunk options (see [here](https://quarto.org/docs/computations/r.html#chunk-options) or [here](https://yihui.org/knitr/options/) for a complete list).
+
+For instance, if you want to hide all the code in your document, you could either go add `echo=FALSE` to each chunk individually, or you could add it to the global chunk options:
+
+``` r
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+You could hide all warnings and messages there too:
+
+``` r
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+***BUT*** I don’t recommend doing that ↑ normally. Warnings are helpful—when you get them, you’ll typically want to try to deal with them. Instead of hiding them, try to fix them. If you can’t fix them (like when you run `library(tidyverse)`), then you can hide them for that chunk.
+
+You can also set default figure dimensions and lots of other settings. I typically include something like this at the start of my documents:
+
+``` r
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.height = 4.3,
+  fig.align = "center", 
+  out.width = "80%"
+)
+```
+
+Make sure you hide the chunk that contains those settings with something like `include: false`, otherwise you’ll see it in your document:
+
+````
+```{{r}}
+#| label: document-chunk-options
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.height = 6 * 0.618,  # Golden rectangles!
+  fig.align = "center", 
+  out.width = "80%"
+)
+```
+````
+
+
+### Fancy document settings
+
+You can make your documents prettier by changing the settings for different outputs ([see this for complete documentation](https://quarto.org/docs/reference/)).
+
+For example, if you want a different font in PDFs, you can include something like this in your frontmatter. [See here for complete details.](https://quarto.org/docs/reference/formats/pdf.html#fonts)
+
+````yaml
+---
+title: "Whatever"
+date: "Whatever"
+format:
+  pdf:
+    mainfont: Garamond
+    fontsize: 10pt
+---
+````
+
+If you want a different template for HTML ([you can use these](https://bootswatch.com/3/), or if you know HTML and CSS, you can make your own), you can do something like this. [See here for complete details.](https://quarto.org/docs/output-formats/html-themes.html)
+
+````yaml
+---
+title: "Whatever"
+date: "Whatever"
+format:
+  html:
+    theme: united
+---
+````
+
+You can't do much with Word because Microsoft makes it hard to do anything to `.docx` files, but you can create a `.docx` file where you define a bunch of style settings (e.g., make Heading 1 a specific sans serif font, left-aligned, bold; make Heading 2 the same font and not bold; make main paragraphs an 11pt serif font; and so on), and then you can inject those styles into the rendere document like this. [See here for complete details.](https://quarto.org/docs/output-formats/ms-word-templates.html)
+
+````yaml
+---
+title: "Whatever"
+date: "Whatever"
+format:
+  docx:
+    reference_doc: my-neat-styles.docx
+---
+````
+
+You can keep all those output-specific settings in the same document—Quarto will only use the settings required for each output (i.e. if you render to PDF it'll ignore the HTML settings):
+
+````yaml
+---
+title: "Whatever"
+date: "Whatever"
+format:
+  pdf:
+    mainfont: Garamond
+  html:
+    theme: united
+  docx:
+    reference_doc: my-neat-styles.docx
+---
+````
+
+You can get really fancy with this stuff. For example, [this Quarto file](https://github.com/andrewheiss/mountainous-mackerel/blob/main/manuscript/manuscript.qmd) creates three different kinds of customized output ([see here](https://stats.andrewheiss.com/mountainous-mackerel/analysis/paper.html/)):
+
+- [PDF](https://stats.andrewheiss.com/mountainous-mackerel/analysis/paper.html)
+- [Manuscripty PDF](https://stats.andrewheiss.com/mountainous-mackerel/analysis/paper.html)
+- [HTML](https://stats.andrewheiss.com/mountainous-mackerel/analysis/paper.html)
+
+
+### Chunk names
+
+[Labeling your R chunks is a good thing to do](/resource/quarto.qmd#chunk-names), since it helps with document navigation and is generally good practice. If you're using chunk labels **make sure you don't use spaces** in them. R will still render a document with spaceful names, but it converts the spaces to underscores before doing it. So instead of naming chunks like `#| label: My Neat Chunk`, use something like `#| label: My Neat Chunk`:
+
++-----------------------------------+-----------------------------------+
+| Bad                               | Good                              |
++===================================+===================================+
+| ````                              | ````                              |
+| Here's some text explaining stuff | Here's some text explaining stuff |
+|                                   |                                   |
+| ```{{r}}                          | ```{{r}}                          |
+| #| label: My Neat Chunk           | #| label: my-neat-chunk           |
+| # Here's some R code              | # Here's some R code              |
+| ggplot(...)                       | ggplot(...)                       |
+| ```                               | ```                               |
+|                                   |                                   |
+| And here's some more text.        | And here's some more text.        |
+| ````                              | ````                              |
++-----------------------------------+-----------------------------------+
