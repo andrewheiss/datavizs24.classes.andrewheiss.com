@@ -158,11 +158,11 @@ Here's how I can tell that that ↑ code comes from an LLM:
 - Using `print()` to show the created object
 :::
 
-I am **not** anti-ChatGPT. I use LLMs like ChatGPT and [GitHub Copilot](https://github.com/features/copilot) all the time in my own work (GitHub Copilot in particular is *really really good* for code—it's better than ChatGPT, and free for students). These tools are phenomenal resources ***when you already know what you are doing***.
+I am **not** anti-ChatGPT. I often use LLMs like ChatGPT and [GitHub Copilot](https://github.com/features/copilot) in my own work (GitHub Copilot in particular is *really really good* for code—it's better than ChatGPT, and free for students). These tools are phenomenal resources ***when you already know what you are doing***.
 
 However, using ChatGPT and other LLMs when *learning* R is actually really detrimental to learning, especially if you just copy/paste directly from what it spits out. It will give you code that is wrong or that contains extra stuff you don't need, and if you don't know enough of the language you're working with, you won't understand why or what's going on.
 
-Using ChatGPT with R requires a good baseline knowledge of R to actually be useful.
+Using ChatGPT with R requires a good baseline knowledge of R to actually be useful. A good analogy for this is with recipes. ChatGPT is really confident at spitting out plausible-looking recipes. A few months ago, for fun, I asked it to give me a cookie recipe. I got back something with flour, eggs, sugar, and all other standard-looking ingredients, but it also said to include 3/4 cup of baking powder. That's wild and obviously wrong, but I only knew that because I've made cookies before. I've seen [other AI-generated recipes](https://www.aiweirdness.com/ai-recipes-are-bad-and-a-proposal-20-01-31/) that call for a cup of horseradish in brownies or 21 pounds of cabbage for a pork dish. A few weeks ago [Google's AI recommended adding glue to pizza sauce to stop the cheese from sliding off](https://www.businessinsider.com/google-ai-glue-pizza-i-tried-it-2024-5). Again, to people who have cooked before, these are all obviously wrong (and dangerous in the case of the glue!), but to a complete beginner, these look like plausible instructions.
 
 In general, **don't ever just copy/paste from ChatGPT and hope it runs.** If you do use these tools, make sure you look through the code and see what it says first—try to understand what each part is doing. For example, if it spits out `summarize(avg_mpg = mean(cty, na.rm = TRUE))`, and you don't know what that `na.rm = TRUE` thing means, look at the help page for `mean()` and see what `na.rm` actually does so you can decide if you really need to use it or not.
 
