@@ -23,6 +23,7 @@ slide_details <- tibble::tribble(
 - {{< fa book >}} [Chapter 7](https://clauswilke.com/dataviz/histograms-density-plots.html) in *Fundamentals of Data Visualization* [@Wilke:2018]
 - {{< fa book >}} Chapters 4, 7, and 11 in *The Truthful Art* [@Cairo:2016]
 - {{< fa arrow-up-right-from-square >}} [Why It's So Hard for Us to Visualize Uncertainty](https://hbr.org/2016/11/why-its-so-hard-for-us-to-visualize-uncertainty)
+- {{< fa arrow-up-right-from-square >}} Philip Bump, ["How To Read This Chart"](https://s2.washingtonpost.com/camp-rw/?s=666d9e958e6d40572eb5485a), June 2024
 - {{< fa brands youtube >}} [Amanda Cox's keynote address at the 2017 OpenVis Conf](https://www.youtube.com/watch?v=0L1tGo-DvD0)
 - {{< fa arrow-up-right-from-square >}} [Communicating Uncertainty When Lives Are on the Line](https://eagereyes.org/blog/2017/communicating-uncertainty-when-lives-are-on-the-line)
 - {{< fa arrow-up-right-from-square >}} [Showing uncertainty during the live election forecast](https://flowingdata.com/2016/11/15/showing-uncertainty-during-the-live-election-forecast/) & [Trolling the uncertainty dial](https://flowingdata.com/2017/06/27/trolling-the-uncertainty-dial/)
