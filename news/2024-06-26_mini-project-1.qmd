@@ -1,0 +1,18 @@
+---
+title: "Time for mini project 1!"
+date: "2024-06-26T08:06"
+categories: [course details]
+toc-depth: 5
+---
+
+Hi everyone!
+
+Mini project 1 is due next week, so it's a good time to start thinking about it. [The complete instructions are accessible here](/assignment/01-mini-project.qmd), **along with starter code** that should help you clean and prepare the data, and the rubric I'll use to grade the project.
+
+I'm giving you a big dataset with 100,000+ rows in it. Your job is to tell some sort of story with it. You'll likely want to summarize it somehow (similar to what you've done with essential pandemic construction and words in *The Lord of the Rings* in past exercises).
+
+Unlike exercises, there *are* late penalties for this mini project (mostly to help keep you on track and on schedule).
+
+If you need help, please reach out on Slack! Do not suffer in silence!
+
+Good luck!
