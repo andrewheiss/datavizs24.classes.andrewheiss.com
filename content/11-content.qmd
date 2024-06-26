@@ -13,12 +13,29 @@ playlist_id <- "PLS6tnpTr39sHxE_PbXWE2RC0mpN6syYhe"
 slide_details <- tibble::tribble(
   ~youtube_id,   ~title, ~slide, ~active,
   "L6BGy0-0X-w", "Introduction", "1", TRUE,
-  "gyVFhQNCp80", "Making interactive graphs", "interactive-graphs", FALSE,
-  "lubDKJhlx9g", "Sharing content", "sharing-content", FALSE
+  "gyVFhQNCp80", "Making interactive graphs", "interactive-graphs", FALSE#,
+  # "lubDKJhlx9g", "Sharing content", "sharing-content", FALSE
 )
 ```
 
 ## Readings
+
+::: {.callout-important}
+### Important updates!
+
+Since recording these materials, there have been a few big changes in the world of R-related interactivity:
+
+1. Quarto now exists as a better, more fully featured version of R Markdown
+2. [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html) now exists for hosting published documents and websites for free
+3. As of the end of 2023, Quarto supports dashboards so there's no need for {flexdashboard}
+
+As a result, there are two important things to note while you watch the lectures:
+
+1. The "Making interactive graphs" section of the slides and videos refers to the {flexdashboard} package. Disregard that and mentally replace mentions of {flexdashboard} with "Quarto Dashboards".
+2. The "Sharing content" section of the slides and videos refers to an online service called RPubs. Disregard all of that. I've omitted that video here.
+:::
+
+
 
 ### Explorable explanations
 
@@ -29,7 +46,7 @@ slide_details <- tibble::tribble(
 
 ### Dashboards
 
-- {{< fa arrow-up-right-from-square >}} Look at [some of these examples of Shiny apps](https://shiny.rstudio.com/gallery/)
+- {{< fa arrow-up-right-from-square >}} Look at some of these examples of [Quarto dashboards](https://quarto.org/docs/gallery/#dashboards) and [Shiny apps](https://shiny.posit.co/r/gallery/)
 - {{< fa arrow-up-right-from-square >}} Stephanie Evergreen, ["How a Dashboard Changes the Conversation"](https://stephanieevergreen.com/dashboard-conversation/)
 - {{< fa arrow-up-right-from-square >}} Stephanie Evergreen, ["The Problem with Dashboards (and a Solution)"](https://stephanieevergreen.com/problem-with-dashboards/)
 - {{< fa arrow-up-right-from-square >}} Stephen Few, ["2012 Perceptual Edge Dashboard Design Competition: A Solution of My Own"](https://www.stephen-few.com/blog/2013/01/08/2012-perceptual-edge-dashboard-design-competition-a-solution-of-my-own/)
@@ -53,10 +70,10 @@ Remember, you don't need to answer all of these—or even any of them! These are
 The slides for this week's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
 
 ```{r show-slide-tabs, echo=FALSE, results="asis"}
-slide_buttons("/slides/10-slides")
+slide_buttons("/slides/11-slides")
 
 xaringanExtra::embed_xaringan(
-  "/slides/10-slides.html",
+  "/slides/11-slides.html",
   ratio = "16:9",
   border = "none",
   margin = "0 auto"

@@ -196,16 +196,16 @@ htmlwidgets::saveWidget(interactive_plot, "fancy_plot.html")
 ```
 
 
-## Making a dashboard with {flexdashboard}
+## Making a dashboard with Quarto
 
-The [documentation for {flexdashboard} is so great and complete](https://rmarkdown.rstudio.com/flexdashboard/) that I'm not going to include a full example here. There is also a brief overview in [chapter 5 of the official R Markdown book](https://bookdown.org/yihui/rmarkdown/dashboards.html). You can also watch [this really quick video here](https://www.youtube.com/watch?v=_oDfBVr9wmQ). She uses a package called {dimple} instead of {plotly}, which doesn't work with ggplot like `ggplotly()`, so *ignore her code* about `dimple()` and use your `ggplotly()` skills instead. You can search YouTube for a bunch of other short tutorial videos, too.
+The documentation for Quarto Dashboards is pretty comprehensive and easy to follow. Visit and read these pages to see how they work:
 
-The quickest and easiest way to get started is to install the {flexdashboard} package and then in RStudio go to File > New File… > Quarto Document… > From Template > Flexdashboard:
+- [Overview](https://quarto.org/docs/dashboards/)
+- [Using Dashboards](https://quarto.org/docs/dashboards/layout.html) (and all the subpages)
+- [Examples](https://quarto.org/docs/gallery/#dashboards)
 
-```{r flexdashboard-template, echo=FALSE, out.width="60%"}
-knitr::include_graphics("/files/img/examples/flexdashboard-template.png", error = FALSE)
-```
+Watch this video by one of the developers of Quarto to see a demonstration of how to make one:
 
-That will give you an empty dashboard with three chart areas spread across two columns. Put static or dynamic graphs in the different chart areas, knit, and you'll be good to go!
-
-If you're interested in making the dashboard reactive with Shiny-like elements, [check out this tutorial](https://www.andrewheiss.com/blog/2020/01/01/flexdashboard-dynamic-data/).
+<div class="ratio ratio-16x9">
+<iframe src="https://www.youtube.com/embed/_VGJIPRGTy4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>

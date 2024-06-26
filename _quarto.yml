@@ -103,15 +103,15 @@ website:
               file: content/09-content.qmd
         - section: "Special applications"
           contents:
-            - text: "10: Interactivity"
+            - text: "10: Enhancing graphics"
               file: content/10-content.qmd
-            - text: "11: Time"
+            - text: "11: Interactivity"
               file: content/11-content.qmd
             - text: "12: Space"
               file: content/12-content.qmd
-            - text: "13: Text"
+            - text: "13: Time"
               file: content/13-content.qmd
-            - text: "14: Enhancing graphics"
+            - text: "14: Text"
               file: content/14-content.qmd
             - text: "15: Truth, beauty, and data revisited"
               file: content/15-content.qmd
@@ -145,15 +145,15 @@ website:
               file: example/09-example.qmd
         - section: "Special applications"
           contents:
-            - text: "10: Interactivity"
+            - text: "10: Enhancing graphics"
               file: example/10-example.qmd
-            - text: "11: Time"
+            - text: "11: Interactivity"
               file: example/11-example.qmd
             - text: "12: Space"
               file: example/12-example.qmd
-            - text: "13: Text"
+            - text: "13: Time"
               file: example/13-example.qmd
-            - text: "14: Enhancing graphics"
+            - text: "14: Text"
               file: example/14-example.qmd
             - text: "15: Sharing R output online"
               file: example/15-example.qmd
@@ -191,15 +191,15 @@ website:
               file: assignment/08-exercise.qmd
             - text: "9: Annotations"
               file: assignment/09-exercise.qmd
-            - text: "10: Interactivity"
+            - text: "10: Enhancing graphics"
               file: assignment/10-exercise.qmd
-            - text: "11: Time"
+            - text: "11: Interactivity"
               file: assignment/11-exercise.qmd
             - text: "12: Space"
               file: assignment/12-exercise.qmd
-            - text: "13: Text"
+            - text: "13: Time"
               file: assignment/13-exercise.qmd
-            - text: "14: Enhancing graphics"
+            - text: "14: Text"
               file: assignment/14-exercise.qmd
             - text: "15: Truth, beauty, and data revisited"
               file: assignment/15-exercise.qmd
@@ -233,15 +233,15 @@ website:
               file: lesson/09-lesson.qmd
         - section: "Special applications"
           contents:
-            - text: "10: Interactivity"
+            - text: "10: Enhancing graphics"
               file: lesson/10-lesson.qmd
-            - text: "11: Time"
+            - text: "11: Interactivity"
               file: lesson/11-lesson.qmd
             - text: "12: Space"
               file: lesson/12-lesson.qmd
-            - text: "13: Text"
+            - text: "13: Time"
               file: lesson/13-lesson.qmd
-            - text: "14: Enhancing graphics"
+            - text: "14: Text"
               file: lesson/14-lesson.qmd
             - text: "15: Truth, beauty, and data revisited"
               file: lesson/15-lesson.qmd

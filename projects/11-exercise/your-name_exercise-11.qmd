@@ -42,6 +42,4 @@ Good luck and have fun!
 
 # Task 3:
 
-Install the {flexdashboard} package and create a new Quarto file in your project by going to File > New File… > Quarto Document… > From Template > Flexdashboard.
-
-Using [the documentation for {flexdashboard} online](https://pkgs.rstudio.com/flexdashboard/articles/using.html), create a basic dashboard that shows a plot (static or interactive) in at least three chart areas. Play with the layout if you're feeling brave.
+Create a Quarto dashboard in a new .qmd file that shows a plot (static or interactive) in at least three chart areas. [See the example for this session](https://datavizs24.classes.andrewheiss.com/example/11-example.html#making-a-dashboard-with-quarto) for resources on creating dashboards in Quarto.

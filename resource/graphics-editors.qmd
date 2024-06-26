@@ -3,7 +3,7 @@ title: "Graphics editors"
 subtitle: "Alternatives to Adobe programs"
 ---
 
-For [exercise 14](/assignment/14-exercise.qmd), [mini-project 2](/assignment/02-mini-project.qmd), and your [final project](/assignment/final-project.qmd), you'll create plots in R, export them as PDFs, and then edit, enhance, and lay out those PDFs using some sort of graphics editor. 
+For [exercise 10](/assignment/10-exercise.qmd), [mini-project 2](/assignment/02-mini-project.qmd), and your [final project](/assignment/final-project.qmd), you'll create plots in R, export them as PDFs, and then edit, enhance, and lay out those PDFs using some sort of graphics editor. 
 
 In the past, I've had students use Adobe Illustrator for this, since GSU provided free student access to [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html), which includes Illustrator. The most common Creative Cloud programs people use for data visualization-related work are:
 

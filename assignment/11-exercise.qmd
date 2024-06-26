@@ -15,7 +15,7 @@ For this exercise, you'll use whatever data you want to make a plot and make it 
 This exercise is a little different from past ones because **you will not render to PDF or Word**. Pay attention to the instructions below.
 :::
 
-[The example for this week's session](/example/11-example.qmd) will be helpful as you tinker with `ggplotly()`, and [the resources listed at the bottom of the example](/example/11-example.qmd#making-a-dashboard-with-flexdashboard) will be helpful for making a dashboard.
+[The example for this week's session](/example/11-example.qmd) will be helpful as you tinker with `ggplotly()`, and [the resources listed at the bottom of the example](/example/11-example.qmd#making-a-dashboard-with-quarto) will be helpful for making a dashboard.
 
 You'll be doing all your R work in Quarto. You can download a zipped file of a pre-made project here:
 
@@ -28,7 +28,7 @@ And as always, if you're struggling, *please* talk to me and use Slack and talk 
 
 1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `11-exercise1.Rproj`: [{{< fa file-archive >}} `11-exercise.zip`](/projects/11-exercise.zip)
 
-   You'll need to make sure you have these packages installed on your computer: `tidyverse`, `plotly`, `flexdashboard`. If you try to load one of those packages with `library(tidyverse)` or `library(plotly)`, etc., and R gives an error that the package is missing, use the "Packages" panel in RStudio to install it.
+   You'll need to make sure you have these packages installed on your computer: `tidyverse` and `plotly`. If you try to load one of those packages with `library(tidyverse)` or `library(plotly)`, etc., and R gives an error that the package is missing, use the "Packages" panel in RStudio to install it.
 
    (Alternatively, you can open the project named "Exercise 11" on Posit.cloud and complete the assignment in your browser without needing to install anything. [This link should take you to the project](https://posit.cloud/spaces/517869/content/8250359)—if it doesn't, log in and look for the project named "Exercise 11".)
 
@@ -38,19 +38,39 @@ And as always, if you're struggling, *please* talk to me and use Slack and talk 
 
    Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or [the example page](/example/11-example.qmd)—don't try to write everything from scratch!).
 
-4. **Here's where this is all different this time.** You will *not* upload a rendered PDF or Word file to iCollege, since those can't handle interactivity. Instead, do this:
+4. **Here's where this is all different this time.** You will *not* upload a rendered PDF or Word file to iCollege, since those can't handle interactivity. Instead, do this (there's a video of this process below):
 
-   1. Render the document with Tasks 1 and 2 in it to HTML and publish it to RPubs using the "Publish document" menu in the preview of the rendered file. Take note of the URL.
+   1. Go to [quartopub.com](https://quartopub.com/) and create a free account. Make sure you're logged in.
 
-```{r render-button, echo=FALSE, out.width="50%", indent="   "}
-knitr::include_graphics("/files/img/assignments/render-button.png", error = FALSE)
-```
+   2. Render the document with Tasks 1 and 2 in it to HTML.
+   
+   3. **In the "Terminal" panel** (*not* the Console panel) in RStudio, type this:
+   
+      ```sh
+      quarto publish NAME_OF_YOUR_QMD.qmd
+      ```
+   
+   4. Select "Quarto Pub". You'll be asked to authorize your computer if you haven't already.
+   
+   5. Hit enter after each question until your browser opens with the rendered document
+   
+   6. Click on the link at the top of the page where it says "Published at https://YOURUSERNAME.quarto.pub/YOUR-DOCUMENT-NAME". That's a shareable URL.
+   
+   7. Render the dashboard from Task 3 to HTML and publish it to Quarto Pub using the same process. Take note of the URL.
 
-   2. Render the dashboard from Task 3 to HTML and publish it to RPubs using the same menu. Take note of the URL.
-
-   3. In iCollege, paste the two URLs into the submission form for exercise 10 following this template:
+   8. In iCollege, paste the two URLs into the submission form for exercise 11 following this template **MAKE SURE** that the URL does *not* start with `https://quartopub.com`; it needs to start with `https://YOURUSERNAME.quarto.pub`.
 
       ```default
       Task 1 and 2: URL HERE
       Task 3 dashboard: URL HERE
       ```
+
+---
+
+Here's what the process looks like: (see [this](https://www.youtube.com/watch?v=l-AQ4yAQXy0) and [this](https://www.youtube.com/watch?v=nuYNCPRf8Js) for other examples)
+
+```{=html}
+<video controls width="100%" style="display: block; margin: auto;">
+  <source src="/files/video/quarto-publish.mp4" type="video/mp4">
+</video>
+```
