@@ -155,7 +155,7 @@ website:
               file: example/13-example.qmd
             - text: "14: Text"
               file: example/14-example.qmd
-            - text: "15: Sharing R output online"
+            - text: "15: Truth, beauty, and data revisited"
               file: example/15-example.qmd
 
     - title: "Assignments"
