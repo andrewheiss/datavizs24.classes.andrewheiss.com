@@ -29,6 +29,7 @@ It looks like this is a lot of reading, but lots of these are short videos or tw
   - {{< fa arrow-up-right-from-square >}} Andrew Heiss, ["How to make fancy road trip maps with R and OpenStreetMap"](https://www.andrewheiss.com/blog/2023/06/01/geocoding-routing-openstreetmap-r/) 
   - {{< fa arrow-up-right-from-square >}} Andrew Heiss, ["Road trip analysis! How to use and play with Google Location History in R"](https://www.andrewheiss.com/blog/2023/07/03/using-google-location-history-with-r-roadtrip/) 
   - {{< fa arrow-up-right-from-square >}} Andrew Heiss, ["Making Middle Earth maps with R"](https://www.andrewheiss.com/blog/2023/04/26/middle-earth-mapping-sf-r-gis/)
+  - {{< fa arrow-up-right-from-square >}} Andrew Heiss, ["Calculating the proportion of US state borders that are coastlines"](https://www.andrewheiss.com/blog/2024/05/08/coastline-to-border-proportions/)
 - {{< fa brands youtube >}} [Why all world maps are wrong](https://www.youtube.com/watch?v=kIID5FDi2JQ)
 - {{< fa arrow-up-right-from-square >}} [The True Size Of…](https://thetruesize.com)
 - {{< fa arrow-up-right-from-square >}} [Projection comparison](https://observablehq.com/@d3/projection-comparison)
