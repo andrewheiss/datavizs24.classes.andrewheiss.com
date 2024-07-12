@@ -1,0 +1,215 @@
+---
+title: "Two layout-related tips for fancier plots and documents"
+date: "2024-07-12T13:32"
+categories: [advice]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.height = 6 * 0.618,
+  fig.align = "center",
+  out.width = "100%",
+  collapse = TRUE
+)
+
+options(
+  digits = 3, width = 120,
+  dplyr.summarise.inform = FALSE
+)
+```
+
+As you've seen in your past exercises, sometimes your visualizations can get large and complex and they start to feel squished and unreadable. You've already [seen some ways to deal with overlapping labels and text](https://www.andrewheiss.com/blog/2022/06/23/long-labels-ggplot/), but sometimes you need a little extra space.
+
+Here are a couple quick tricks for getting extra space in your plots and documents!
+
+### Extra space in {patchwork}
+
+When you use {patchwork}, there's often not a lot of space between the plots that you combine. This violates the "P" in CRAP and hurts the overall proximity in the plot.
+
+Here's an example with some penguins data. Let's make three plots and stick them all in a row:
+
+```{r}
+#| label: make-initial-plots
+#| warning: false
+#| message: false
+#| fig-width: 9
+#| fig-height: 4
+
+library(tidyverse)
+library(palmerpenguins)
+library(patchwork)
+
+penguins <- penguins |> drop_na(sex)
+
+plot1 <- ggplot(
+  penguins, 
+  aes(x = bill_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point() +
+  scale_colour_viridis_d(option = "plasma", end = 0.9) +
+  labs(title = "Weight and bill length") +
+  theme_bw() +
+  theme(legend.position = "bottom", legend.title.position = "top")
+
+plot2 <- ggplot(
+  penguins, 
+  aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  scale_color_viridis_d(option = "viridis") +
+  labs(title = "Weight and flipper length") +
+  theme_bw() +
+  theme(legend.position = "bottom", legend.title.position = "top")
+
+plot3 <- ggplot(
+  penguins, 
+  aes(y = body_mass_g)
+) +
+  geom_histogram(bins = 10, fill = "#0074D9", color = "white", boundary = 0) +
+  labs(title = "Weight") +
+  theme_bw()
+
+plot1 | plot2 | plot3
+```
+
+These plots are feeling a little squished, and it would be nice if we could add a little margin between them. The easiest way I've found to do this is to use a [special plot that comes from {patchwork} named `plot_spacer()`](https://patchwork.data-imaginist.com/reference/plot_spacer.html),^[You can also use `plot.margin` in `theme()`—see the bottom of the documentation for `plot_spacer()` for an example—but I like this approach better] which is really just an empty plot:
+
+```{r}
+#| label: empty-plot-spacer
+#| fig-width: 3
+#| fig-height: 3
+#| out-width: 30%
+#| out-extra: 'class="border"'
+
+plot_spacer()
+```
+
+So pretty.
+
+You can include it as part of the combination of plots:
+
+```{r}
+#| label: plot-spacer-equal
+#| fig-width: 9
+#| fig-height: 4
+
+plot1 | plot_spacer() | plot2 | plot_spacer() | plot3
+```
+
+That gives us the extra space we wanted, but it's too much space. Each of those 5 plots takes up the same proportion (20%) of the overall plot. But we can fix it.
+
+{patchwork} lets you control the heights and widths of the plots elements with `plot_layout()`. Like here, we can make one of the plots take up 75% of the width:
+
+```{r}
+#| label: plot-spacer-75-25
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: 80%
+
+(plot1 | plot3) +
+  plot_layout(widths = c(0.75, 0.25))
+```
+
+We can use `plot_layout()` to control the widths of the empty spacer plots too. We'll make the spacers take up 3% of the width, the two scatterplots each take up 37%, and the histogram take up 20% (these all add up to 100%; I tinkered with the values until they looked okay):
+
+```{r}
+#| label: plot-spacer-nice
+#| fig-width: 9
+#| fig-height: 4
+
+penguins_spaced <- (plot1 | plot_spacer() | plot2 | plot_spacer() | plot3) +
+  plot_layout(widths = c(0.37, 0.03, 0.37, 0.03, 0.20))
+penguins_spaced
+```
+
+Much better! There's now a nice little bit of whitespace between each of the plots, giving a little more breathing space and helping with the overall proximity.
+
+You can use `plot_layout()` and `plot_spacer()` to make all sorts of fancy, well-spaced plots. For instance, these each use some extra horizontal space to keep things separate:
+
+::: {.panel-tabset}
+### Two plots, same height
+
+```r
+(p_h2b_mms / plot_spacer() / p_h2b_amces) +
+  plot_layout(ncol = 1, heights = c(0.49, 0.02, 0.49))
+```
+
+![[From this page](https://stats.andrewheiss.com/silent-skywalk/notebook/results-crackdown.html)](img/plot-h2b-mm-amce-1.png){width="85%"}
+
+### Three plots, different heights
+
+```r
+(hist_out + hist_trt) / plot_spacer() / plot_trt_out +
+  plot_layout(heights = c(0.28, 0.02, 0.7))
+```
+
+![[From this page](https://www.andrewheiss.com/blog/2021/08/25/twfe-diagnostics/#a-different-way-of-thinking-about-ols-coefficients)](img/show-fake-data-1.png){width="85%"}
+:::
+
+
+### Use the margins
+
+Sometimes your plots are wide. That's totally normal! Remember exercise 8 with the faceted small multiples of states or exercise 10 with the improved hot dog plot? Those were all really wide and hard to include in your document. Even the penguin plot example above is a little tricky to fit comfortably:
+
+```{r}
+#| label: plot-spacer-nice-again
+#| fig-width: 9
+#| fig-height: 4
+
+penguins_spaced
+```
+
+```{r}
+#| label: sidebar
+#| fig-cap: I'm in the margin!
+#| column: margin
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+plot1
+```
+
+Quarto has a really neat feature, though, that lets you put content that stretches outside of the margin a little bit, or a lot bit, or uses no margin at all. You can also [place content in the margins](https://quarto.org/docs/authoring/article-layout.html#margin-figures), like the plot over there →
+
+[See the documentation for a bunch of examples](https://quarto.org/docs/authoring/article-layout.html). These all work in HTML, and many work in PDF (nothing really works in Word, though, since it's not a layout program and was designed for writing).
+
+Here's a plot that goes a little bit out of the margins:
+
+```{r}
+#| echo: fenced
+#| column: body-outset
+#| fig-width: 9
+#| fig-height: 4
+penguins_spaced
+```
+
+…and one that is a little wider:
+
+```{r}
+#| echo: fenced
+#| column: page
+#| fig-width: 9
+#| fig-height: 4
+penguins_spaced
+```
+
+…and one that only goes into the right margin:
+
+```{r}
+#| echo: fenced
+#| column: page-right
+#| fig-width: 9
+#| fig-height: 4
+penguins_spaced
+```
+
+…and one that takes up the whole page:
+
+```{r}
+#| echo: fenced
+#| column: screen
+#| fig-width: 9
+#| fig-height: 4
+penguins_spaced
+```
