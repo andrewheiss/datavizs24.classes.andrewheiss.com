@@ -125,7 +125,7 @@ penguins_spaced
 
 Much better! There's now a nice little bit of whitespace between each of the plots, giving a little more breathing space and helping with the overall proximity.
 
-You can use `plot_layout()` and `plot_spacer()` to make all sorts of fancy, well-spaced plots. For instance, these each use some extra horizontal space to keep things separate:
+You can use `plot_layout()` and `plot_spacer()` to make all sorts of fancy, well-spaced plots. For instance, these each use some extra vertical space to keep things separate:
 
 ::: {.panel-tabset}
 ### Two plots, same height
