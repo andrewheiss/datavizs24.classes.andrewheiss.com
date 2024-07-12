@@ -2339,6 +2339,24 @@
       ],
       "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
     },
+    "lemon": {
+      "Package": "lemon",
+      "Version": "0.4.9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grid",
+        "gridExtra",
+        "gtable",
+        "knitr",
+        "lattice",
+        "plyr",
+        "scales"
+      ],
+      "Hash": "7899526ee94f182512cca35bfe14704c"
+    },
     "lifecycle": {
       "Package": "lifecycle",
       "Version": "1.0.4",

@@ -1,0 +1,533 @@
+---
+title: "Sessions 9 and 10 tips and FAQs"
+date: "2024-07-11T23:53"
+categories: [FAQs]
+toc-depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.height = 6 * 0.618,
+  fig.align = "center",
+  out.width = "90%",
+  collapse = TRUE
+)
+
+options(
+  digits = 3, width = 120,
+  dplyr.summarise.inform = FALSE
+)
+```
+
+### How do I include a separate image in my document?
+
+In exercise 10, you were supposed to include your enhanced plot in the Quarto document with your reflection, but it was a little tricky to do.
+
+Adding images to your document doesn't actually involve R—it's a Markdown thing, just like how you use `*italics*` or `## headings`. The [guide to using Markdown](/resource/markdown.qmd) has an example of the syntax:
+
+```text
+![Caption for the image](name_of_file.png)
+```
+
+Again, that's not R code—don't put it in a chunk. If you do, things will break. 
+
+**↓ THIS IS WRONG ↓**
+
+````text
+```{{r}}
+![Caption for the image](name_of_file.png)
+```
+````
+
+Instead, make sure you put the image syntax *outside* of a chunk with your regular text:
+
+````text
+Blah blah I'm writing text here.
+
+Here's some code I wrote:
+
+```{{r}}
+library(tidyverse)
+
+ggplot(...) +
+  geom_whatever()
+```
+
+Blah blah I'm writing more text again. Here's a neat picture I made:
+
+![Caption for the image](name_of_file.png)
+````
+
+Quarto lets you do fancier things with images too, like controlling their widths, making them centered or left or right aligned, and laying out multiple figures all at once. [See the documentation for full details and examples](https://quarto.org/docs/authoring/figures.html):
+
+```text
+![Caption for the image](name_of_file.png){width=60% fig-align="right"}
+```
+
+### I have numbers like 20000 and want them formatted with commas like 20,000. Can I do that automatically?
+
+Yes you can! There's an incredible package called [{scales}](https://scales.r-lib.org/). It lets you format numbers and axes and all sorts of things in magical ways. If you [look at the documentation](https://scales.r-lib.org/reference/index.html), you'll see a ton of `label_SOMETHING()` functions, like `label_comma()`, `label_dollar()`, and `label_percent()`.
+
+You can use these different labeling functions inside `scale_AESTHETIC_WHATEVER()` layers in ggplot. 
+
+`label_comma()` adds commas:
+
+```{r gapminder-comma, message=FALSE}
+library(tidyverse)
+library(scales)
+library(gapminder)
+
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
+
+ggplot(gapminder_2007, aes(x = gdpPercap)) +
+  geom_histogram(binwidth = 1000) +
+  scale_x_continuous(labels = label_comma())
+```
+
+`label_dollar()` adds commas and includes a "$" prefix:
+
+```{r gapminder-dollar}
+ggplot(gapminder_2007, aes(x = gdpPercap)) +
+  geom_histogram(binwidth = 1000) +
+  scale_x_continuous(labels = label_dollar())
+```
+
+`label_percent()` multiplies values by 100 and formats them as percents:
+
+```{r gapminder-percent}
+gapminder_percents <- gapminder_2007 |> 
+  group_by(continent) |> 
+  summarize(n = n()) |> 
+  mutate(prop = n / sum(n))
+
+ggplot(gapminder_percents, aes(x = continent, y = prop)) +
+  geom_col() +
+  scale_y_continuous(labels = label_percent())
+```
+
+You can also change a ton of the settings for these different labeling functions. Want to format something as Euros and use periods as the number separators instead of commas, like Europeans? Change the appropriate arguments! You can check the documentation for each of the `label_WHATEVER()` functions to see what you can adjust ([like `label_dollar()` here](https://scales.r-lib.org/reference/label_dollar.html))
+
+```{r gapminder-euro, warning=FALSE}
+ggplot(gapminder_2007, aes(x = gdpPercap)) +
+  geom_histogram(binwidth = 1000) +
+  scale_x_continuous(labels = label_dollar(prefix = "€", big.mark = "."))
+```
+
+All the `label_WHATEVER()` functions actually create copies of themselves, so if you're using lots of custom settings, you can create your own label function, like `label_euro()` here:
+
+```{r gapminder-euro-custom, warning=FALSE}
+# Make a custom labeling function
+label_euro <- label_dollar(prefix = "€", big.mark = ".")
+
+# Use it on the x-axis
+ggplot(gapminder_2007, aes(x = gdpPercap)) +
+  geom_histogram(binwidth = 1000) +
+  scale_x_continuous(labels = label_euro)
+```
+
+These labeling functions also work with other aesthetics, like fill and color and size. Use them in `scale_AESTHETIC_WHATEVER()`:
+
+```{r gapminder-scales-legends}
+ggplot(
+  gapminder_2007, 
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = pop)
+) +
+  geom_point() +
+  scale_x_continuous(labels = label_dollar()) +
+  scale_size_continuous(labels = label_comma()) +
+  scale_color_viridis_c(labels = label_comma())
+```
+
+There are also some really neat and fancy things you can do with scales, like formatting logged values, abbreviating long numbers, and many other things. [Check out this post](https://www.andrewheiss.com/blog/2022/12/08/log10-natural-log-scales-ggplot/) for an example of working with logged values.
+
+```{r gapminder-scatter-fancy}
+ggplot(
+  gapminder_2007,
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)
+) +
+  geom_point() +
+  scale_x_log10(
+    breaks = 500 * 2^seq(1, 9, by = 1),
+    labels = label_dollar(scale_cut = append(scales::cut_short_scale(), 1, 1))
+  ) +
+  scale_size_continuous(labels = label_comma(scale_cut = cut_short_scale()))
+```
+
+
+### How can I get month and weekday names or abbreviations for dates?
+
+In Mini Project 1 (and in other exercises that involve dates), lots of you wanted to take month numbers and change them into month names or month abbreviations. 
+
+Some of you used something like a big if else statement: if the month number is 1, use "January"; if the month number is 2, use "February"; and so on
+
+```r
+... |>
+  mutate(month_name = case_when(
+    month_number == 1 ~ "January",
+    month_number == 2 ~ "February",
+    month_number == 3 ~ "March",
+    ...
+  ))
+```
+
+While that works, it's kind of a brute force approach. There are better, far easier ways.
+
+In the FAQs for sessions 5 and 6, [I showed how R has built-in variables for US state and region names](/news/2024-07-05_faqs_session-07-08.qmd#my-data-has-full-us-state-names-but-i-want-to-use-abbreviations-or-regions.-is-there-a-way-to-automatically-convert-from-names-to-something-else):
+
+```{r}
+state.name
+state.region
+```
+
+I then showed how to join those into other datasets as new columns.
+
+You can do something similar with `month.name` and `month.abb`, which are also special built-in variables:
+
+```{r}
+month.name
+month.abb
+```
+
+But that's still kinda miserable to work with, and there's no built-in data for weekday names. Also, if you merge month names like this, they will appear in your plots in alphabetic order instead of January → February → March, and you'll have to do extra work to get them in the right order.
+
+There's a better, far easier way!
+
+The {lubridate} package (one of the nine packages that gets loaded when you run `library(tidyverse)`) has some neat functions for extracting and formatting parts of dates. You saw a bunch of these in the [starter code for Mini Project 1](/assignment/01-mini-project.qmd#starter-code), like `year()` and `month()` and `wday()`:
+
+```r
+rats_clean <- rats_raw |>
+  ... |>
+  mutate(sighting_year = year(created_date),
+         sighting_month = month(created_date),
+         sighting_day = day(created_date),
+         sighting_weekday = wday(created_date, label = TRUE, abbr = FALSE))
+```
+
+These take dates and do stuff with them. For instance, let's put today's date in a variable named `x`:
+
+```{r}
+x <- ymd("2024-07-12")
+x
+```
+
+We can extract the year using `year()`:
+
+```{r}
+year(x)
+```
+
+…or the week number using `weeknum()`:
+
+```{r}
+week(x)
+```
+
+…or the month number using `month()`:
+
+```{r}
+month(x)
+```
+
+If you look at the help page for `month()`, you'll see that it has arguments for `label` and `abbr`, which will toggle text instead numbers, and full month names instead of abbreviations:
+
+```{r}
+month(x, label = TRUE, abbr = TRUE)
+month(x, label = TRUE, abbr = FALSE)
+```
+
+It outputs ordred factors too, so the months are automatically in the right order for plotting!
+
+`wday()` does the same thing for days of the week:
+
+```{r}
+wday(x)
+wday(x, label = TRUE, abbr = TRUE)
+wday(x, label = TRUE, abbr = FALSE)
+```
+
+So instead of doing weird data contortions to get month names or weekday names, just use `month()` and `wday()`. You can use them directly in `mutate()`. For example, here they are in action in a little sample dataset:
+
+```{r}
+example_data <- tribble(
+  ~event, ~date,
+  "Moon landing", "1969-07-20",
+  "WHO COVID start date", "2020-03-13"
+) |>
+  mutate(
+    # Convert to an actual date
+    date_actual = ymd(date),
+    # Extract a bunch of things
+    year = year(date_actual),
+    month_num = month(date_actual),
+    month_abb = month(date_actual, label = TRUE, abbr = TRUE),
+    month_full = month(date_actual, label = TRUE, abbr = FALSE),
+    week_num = week(date_actual),
+    wday_num = wday(date_actual),
+    wday_abb = wday(date_actual, label = TRUE, abbr = TRUE),
+    wday_full = wday(date_actual, label = TRUE, abbr = FALSE)
+  )
+example_data
+```
+
+### Can I get these automatic month and day names in non-English languages?
+
+Lots of you speak languages other than English. While R functions like `plot()` and `geom_point()` and so on are locked into English, the messages and warnings that R spits out can be localized into most other languages. R detects what language your computer is set to use and then tries to match it.
+
+Functions like `month()` and `wday()` also respect your computer's language setting and will give you months and days in whatever your computer is set to. That's neat, but what if your computer is set to French and you want the days to be in English? Or what if your computer is set to English but you're making a plot in German?
+
+You can actually change R's localization settings to get output in different languages!
+
+If you want to see what your computer is currently set to use, run `Sys.getLocale()`:
+
+```{r}
+Sys.getlocale()
+```
+
+There's a bunch of output there—the first part (`en_US.UTF-8`) is the most important and tells you the language code. The code here follows a pattern and has three parts:
+
+- A language: `en`. This is the langauge, and typically uses a two-character abbreviation following the [ISO 639 standard](https://en.wikipedia.org/wiki/ISO_639-1)
+- A territory: `US`. This is the country or region for that language, used mainly to specify the currency. If it's set to `en_US`, it'll use US conventions (like "$" and "color"); if it's set to `en_GB` it'll use British conventions (like "£" and "colour"). It uses a two-character abbreviation following the [ISO 3166 standard](https://en.wikipedia.org/wiki/ISO_3166).
+- An encoding: `UTF-8`. This is how the text is actually represented and stored on the computer. This defaults to Unicode (UTF-8) here. You don't generally need to worry about this.
+
+For macOS and Linux (i.e. Posit Cloud), setting locale details is pretty straightforward and predictable because they both follow this pattern consistently:
+
+- `en_GB`: British English
+- `fr_FR`: French in France
+- `fr_CH`: French in Switzerland
+- `de_CH`: German in Switzerland
+- `de_DE`: German in Germany
+
+If you run `locale -a` in your *terminal* (not in your R console) on macOS or in Posit Cloud, you'll get a list of all the different locales your computer can use. Here's what I have on my computer:
+
+```{r}
+#| echo: false
+#| collapse: false
+#| class-output: text
+
+system("locale -a", intern = TRUE) |>
+  str_split_fixed("\\.", 2) |>
+  magrittr::extract(, 1) |>
+  unique() |>
+  sort()
+```
+
+For whatever reason, Windows doesn't use this naming convention. It uses dashes or full words instead, like `en-US` or `american` or `en-CA` or `canadian`. You can [see a list here](https://learn.microsoft.com/en-us/cpp/c-runtime-library/language-strings?view=msvc-170), or google `Windows language country strings` (that's actually [RStudio's official recommendation for finding Windows language codes](https://rstudio.github.io/r-manuals/r-admin/Internationalization.html))
+
+Once you know the language code, you can use it in R. Let's make a little variable named `x` with today's date:
+
+```{r}
+x <- ymd("2024-07-12")
+```
+
+Because I'm using English as my default locale, the output of `wday()` and `month()` will be in English:
+
+```{r}
+wday(x, label = TRUE, abbr = FALSE)
+month(x, label = TRUE, abbr = FALSE)
+```
+
+Those functions have a `locale` argument, though, so it's really easy to switch between languages:
+
+::: {.panel-tabset}
+### Weekdays
+
+```{r}
+wday(x, label = TRUE, abbr = FALSE, locale = "en_US")
+wday(x, label = TRUE, abbr = FALSE, locale = "fr_FR")
+wday(x, label = TRUE, abbr = FALSE, locale = "fr_BE")
+wday(x, label = TRUE, abbr = FALSE, locale = "it_IT")
+wday(x, label = TRUE, abbr = FALSE, locale = "zh_CN")
+```
+
+### Months
+
+```{r}
+month(x, label = TRUE, abbr = FALSE, locale = "en_US")
+month(x, label = TRUE, abbr = FALSE, locale = "fr_FR")
+month(x, label = TRUE, abbr = FALSE, locale = "fr_BE")
+month(x, label = TRUE, abbr = FALSE, locale = "it_IT")
+month(x, label = TRUE, abbr = FALSE, locale = "zh_CN")
+```
+:::
+
+You can also set the locale for your entire R session like this:
+
+```{r}
+Sys.setlocale(locale = "de_DE")
+```
+
+Now `month()` and `wday()` will use German by default without needing to set the `locale` argument:
+
+```{r}
+month(x, label = TRUE, abbr = FALSE)
+wday(x, label = TRUE, abbr = FALSE)
+```
+
+I'll switch everything back to English for the rest of this post :)
+
+```{r}
+Sys.setlocale(locale = "en_US.UTF-8")
+```
+
+### The importance of layer order
+
+So far this semester, most of your plots have involved one or two `geom_*` layers. At one point in some video (I think), I mentioned that layer order doesn’t matter with ggplot. These two chunks of code create identical plots:
+
+```r
+ggplot(...) +
+  geom_point(...) +
+  theme_minimal(...) +
+  scale_fill_viridis_c(...) +
+  facet_wrap(...) +
+  labs(...)
+
+ggplot(...) +
+  geom_point(...) +
+  labs(...) +
+  theme_minimal(...) +
+  facet_wrap(...) +
+  scale_fill_viridis_c(...)
+```
+
+All those functions can happen in whatever order you want, **with one exception**. The order of the geom layers matters. The first geom layer you specify will be plotted first, the second will go on top of it, and so on.
+
+Let’s say you want to have a violin plot with jittered points on top. If you put `geom_point()` first, the points will be hidden by the violins:
+
+```{r plot-violin-top}
+library(palmerpenguins)
+penguins <- penguins |> drop_na(sex)
+
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_point(position = position_jitter(seed = 1234), size = 0.5) +
+  geom_violin(aes(fill = species))
+```
+
+To fix it, make sure `geom_violin()` comes first:
+
+```{r plot-violin-bottom}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_violin(aes(fill = species)) +
+  geom_point(position = position_jitter(seed = 1234), size = 0.5)
+```
+
+This layer order applies to annotation layers too. If you want to highlight an area of the plot, adding a rectangle after the geom layers will cover things up, like this ugly yellow rectangle here:
+
+```{r plot-rect-top}
+ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point() +
+  annotate(geom = "rect", xmin = 40, xmax = 60, ymin = 5000, ymax = 6100,
+           fill = "yellow", alpha = 0.75)
+```
+
+To fix that, put that `annotate()` layer first, then add other geoms on top:
+
+```{r plot-rect-bottom}
+ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  annotate(geom = "rect", xmin = 40, xmax = 60, ymin = 5000, ymax = 6100,
+           fill = "yellow", alpha = 0.75) +
+  geom_point()
+```
+
+This doesn’t mean *all* `annotate()` layers should come first—if you want an extra label on top of a geom, make sure it comes after:
+
+```{r plot-rect-bottom-label-top}
+ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  # Yellow rectangle behind everything
+  annotate(geom = "rect", xmin = 40, xmax = 60, ymin = 5000, ymax = 6100,
+           fill = "yellow", alpha = 0.75) +
+  # Points
+  geom_point() +
+  # Label on top of the points and the rectangle
+  annotate(geom = "label", x = 50, y = 5500, label = "chonky birds")
+```
+
+::: {.callout-tip}
+### My personal preferred general layer order
+
+When I make my plots, I try to keep my layers in logical groups. I'll do my geoms and annotations first, then scale adjustments, then guide adjustments, then labels, then facets (if any), and end with theme adjustments, like this:
+
+```{r example-ordering, warning=FALSE, message=FALSE}
+library(scales)
+
+ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  # Annotations and geoms
+  annotate(geom = "rect", xmin = 40, xmax = 60, ymin = 5000, ymax = 6100,
+           fill = "yellow", alpha = 0.75) +
+  geom_point() +
+  annotate(geom = "label", x = 50, y = 5500, label = "chonky birds") +
+  # Scale adjustments
+  scale_x_continuous(labels = label_comma(scale_cut = cut_si("mm"))) +
+  scale_y_continuous(labels = label_comma(scale_cut = cut_si("g"))) +
+  scale_color_viridis_d(option = "plasma", end = 0.6) +
+  # Guide adjustments
+  guides(color = guide_legend(title.position = "left")) +
+  # Labels
+  labs(x = "Bill length", y = "Body mass", color = "Species:",
+       title = "Some title", subtitle = "Penguins!", caption = "Blah") +
+  # Facets
+  facet_wrap(vars(sex)) +
+  # Theme stuff
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = rel(1.4)),
+        plot.caption = element_text(color = "grey50", hjust = 0),
+        axis.title.x = element_text(hjust = 0),
+        axis.title.y = element_text(hjust = 1),
+        strip.text = element_text(hjust = 0, face = "bold"),
+        legend.position = "bottom",
+        legend.justification = c(-0.04, 0),
+        legend.title = element_text(size = rel(0.9)))
+```
+
+This is totally arbitrary though! All that really matters is that the geoms and annotations are in the right order and that any theme adjustments you make with `theme()` come after a more general theme like `theme_grey()` or `theme_minimal()`, etc.. I'd recommend you figure out your own preferred style and try to stay consistent—it'll make your life easier and more predictable.
+:::
+
+
+### My plot didn’t translate perfectly to ggplotly—why?
+
+In session 11 you used `ggplotly()` to convert a ggplot object into an interactive plot, which I think is magical:
+
+```{r basic-plotly, warning=FALSE, message=FALSE}
+library(plotly)
+
+basic_plot <- ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point()
+
+ggplotly(basic_plot)
+```
+
+\ 
+
+However, lots of you discovered that Plotly does not translate everything perfectly. Plotly is a separate Javascript library and it doesn’t support every option ggplot does. `ggplotly()` tries its best to translate between R and Javascript, but it can’t get everything. For instance, subtitles, captions, and labels disappear:
+
+```{r fancy-plotly-stuff-missing, warning=FALSE}
+fancy_plot <- ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point() +
+  annotate(geom = "label", x = 50, y = 5500, label = "chonky birds") +
+  labs(title = "Penguin bill length and weight",
+       subtitle = "Neato", 
+       caption = "Here's a caption")
+
+ggplotly(fancy_plot)
+```
+
+\ 
+
+That’s just a limitation with ggplot and plotly. If you want a perfect translation, you’ll need to hack into the guts of the translated Javascript and HTML and edit it manually to add those things.
+
+Alternatively, you can check out other interactive plot packages. [{ggiraph}](https://davidgohel.github.io/ggiraph/) makes really great and customizable interactive plots (and it supports things like subtitles and captions and labels and other annotations ggplotly can't), but with slightly different syntax:
+
+```{r ggiraph-thing}
+library(ggiraph)
+
+plot_thing <- ggplot(data = penguins) +
+  geom_point_interactive(aes(x = bill_length_mm, y = body_mass_g, color = species,
+                             tooltip = species, data_id = species)) +
+  annotate(geom = "label", x = 50, y = 5500, label = "chonky birds") +
+  labs(title = "Penguin bill length and weight",
+       subtitle = "Neato", 
+       caption = "Here's a caption")
+
+girafe(ggobj = plot_thing)
+```

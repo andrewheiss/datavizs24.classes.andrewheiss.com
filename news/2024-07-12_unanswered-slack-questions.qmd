@@ -1,0 +1,23 @@
+---
+title: "Unanswered Slack questions"
+date: "2024-07-11T23:58"
+categories: [advice]
+---
+
+One really quick thing about Slack—stuff like this happens all the time on websites where people ask for help (and in Slack):
+
+::: {.callout-note icon=false}
+### `#help`
+
+**Person A:** I'm stuck with this issue and can't get X to work
+
+*(10 minutes later…)*
+
+**Person A:** Oh wait, never mind, I fixed it!
+
+*(Person A disappears…)*
+:::
+
+If you ask a question and then figure out the answer yourself, **let us know how you did it!** It's likely that other people have similar questions and issues, and seeing solved-but-unexplained questions is sad:
+
+![[xkcd #979: "Wisdom of the Ancients"](https://xkcd.com/979/)](img/wisdom_of_the_ancients.png)
