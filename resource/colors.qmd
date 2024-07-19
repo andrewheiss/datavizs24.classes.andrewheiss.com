@@ -1,0 +1,587 @@
+---
+title: "Color palettes"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.height = 6 * 0.618, 
+  fig.align = "center", 
+  out.width = "70%",
+  collapse = TRUE
+)
+```
+
+```{r html-helpers, include=FALSE}
+span_col <- function(text, color) {
+  glue::glue('<span style="color: {color}">',
+             '<i class="magic-block" aria-hidden="true">■</i>',
+             '{text}',
+             '</span>')
+}
+```
+
+## Categories of color palettes
+
+When choosing colors, you need to make sure you work with a palette that mathches the nature of your data. There are three broad categories of color-able data: sequential, diverging, and qualitative.
+
+Here's are three plots I'll use throughout this page to illustrate their differences (and show off different colors). The code is hidden to save space—you can show the code and copy/paste it if you want to follow along:
+
+```{r}
+#| warning: false
+#| message: false
+#| code-fold: true
+
+library(tidyverse)
+library(gapminder)
+library(palmerpenguins)
+library(ggokabeito)
+library(scico)
+library(rcartocolor)
+library(MetBrewer)
+library(MoMAColors)
+library(patchwork)
+
+plot_diverging <- tribble(
+  ~category, ~pct,
+  "Strongly disagree", 0.12,
+  "Disagree", 0.18,
+  "Neutral", 0.15,
+  "Agree", 0.27,
+  "Strongly agree", 0.28
+) |>
+  mutate(category = fct_inorder(category)) |>
+  ggplot(aes(x = pct, y = category, fill = category)) +
+  geom_col() +
+  guides(fill = "none") +
+  theme_bw() +
+  theme(plot.title = element_text(face = "bold"))
+
+plot_sequential <- penguins |>
+  drop_na(sex) |>
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = flipper_length_mm)) +
+  geom_point() +
+  theme_bw() +
+  theme(plot.title = element_text(face = "bold"))
+
+plot_qualitative <- gapminder |>
+  filter(year %in% c(1967, 1987, 2007)) |>
+  group_by(year, continent) |>
+  summarize(avg_lifexp = mean(lifeExp)) |>
+  mutate(year = factor(year)) |>
+  ggplot(aes(x = year, y = avg_lifexp, fill = continent)) +
+  geom_col(position = "dodge") +
+  theme_bw() +
+  theme(plot.title = element_text(face = "bold"))
+```
+
+### Sequential
+
+With sequential data, colors represent a range from low value to a high value, so the colors either stay within one shade or hue of a color, or use multiple related hues
+
+::: {.panel-tabset}
+
+### Default single blue hue
+```{r}
+#| label: fig-sequential-base
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_sequential
+```
+
+### Multiple red-purple hues (`RdPu` from ColorBrewer)
+```{r}
+#| label: fig-sequential-rdpu
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_sequential +
+  scale_color_distiller(palette = "RdPu", direction = 1)
+```
+:::
+
+### Diverging
+
+With diverging data, colors represent values above and below some central value, like negative to zero to positive; disagree to neutral to agree; etc. These palettes typically involve three colors: two for the extremes and one for the middle
+
+::: {.panel-tabset}
+
+### Default ggplot colors
+
+By default, ggplot doesn't actually do anything with diverging scales. If you have numeric data, it'll use a blue gradient; if you have categorical data, it'll use distinct colors. You're in charge of applying a diverging palette.
+
+```{r}
+#| label: fig-diverging-base
+#| fig-width: 5
+#| fig-height: 2.5
+
+# This doesn't show up as diverging
+plot_diverging
+```
+
+### Diverging red-yellow-blue palette (`RdYlBu` from ColorBrewer)
+```{r}
+#| label: fig-diverging-RdYlBu
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_diverging +
+  scale_fill_brewer(palette = "RdYlBu", direction = 1)
+```
+:::
+
+::: {.callout-warning}
+### Don't use diverging palettes for non-diverging data!
+
+People will often throw diverging palettes onto plots that aren't actually diverging, like this:
+
+```{r}
+#| label: fig-diverging-sequential
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_sequential +
+  scale_color_distiller(palette = "RdBu", direction = 1)
+```
+
+Don't do this! It looks weird having 200 be a super-faded middle color. Flipper length here ranges from a low number to a high number—the colors should reflect that.
+:::
+
+### Qualitative
+
+With qualitative data, colors represent distinct categories and don't have an inherent order. The colors shouldn't look like they have a natural progression.
+
+::: {.panel-tabset}
+
+### Default ggplot colors
+```{r}
+#| label: fig-qualitative-base
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative
+```
+
+### viridis colors
+```{r}
+#| label: fig-qualitative-viridis
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative +
+  scale_fill_viridis_d()
+```
+:::
+
+
+## Using custom colors
+
+You can use any custom colors with `scale_fill_manual()`/`scale_color_manual()` (for qualitative/categorical colors) or `scale_fill_gradident()`/`scale_color_gradient()` (for sequential/continuous colors).
+
+Feed these functions a vector of colors, either as named colors like `r span_col('red', "#F00")`, `r span_col('goldenrod3', "#CD9B1D")`, `r span_col('midnightblue', "#191970")`, and so on ([see here for R's huge list of built-in color names](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)), or as [hex codes](https://www.color-hex.com/) like `r span_col('#FF4136', "#FF4136")`, `r span_col('#0074D9', "#0074D9")`, and `r span_col('#FF851B', "#FF851B")`.
+
+::: {.panel-tabset}
+
+### Hex colors
+
+I copied these colors from [clrs.cc](https://clrs.cc/).
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative +
+  scale_fill_manual(
+    values = c("#0074D9", "#B10DC9", "#85144b", "#FF4136", "#FF851B")
+  )
+```
+
+### Named colors in a gradient
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_sequential +
+  scale_color_gradient(low = "chocolate1", high = "chocolate4")
+```
+:::
+
+Often organizations have specific color palettes that you're supposed to use. For instance, [GSU has a special "Georgia State Blue"](https://commkit.gsu.edu/website-management/web-color-guidelines/) (`r span_col('#0039A6', "#0039A6")`) and a red accent (`r span_col('#CC0000', "#CC0000")`). The Urban Institute has a [specific organizational color palette](https://urbaninstitute.github.io/graphics-styleguide/#color) with all sorts of guidelines for comparing two groups, three groups, sequential data, diverging data, and other special situations. They have specific red and blue colors to use for political parties too, like `r span_col('#1696d2', "#1696d2")` for Democrats and `r span_col('#db2b27', "#db2b27")` for Republicans.
+
+I often find it helpful to make a little object that contains all the custom colors I want to use so I don't have to remember what the cryptic hex codes mean. Here's [GSU's full palette](https://commkit.gsu.edu/website-management/web-color-guidelines/):
+
+```{r}
+gsu_colors <- c(
+  "#0039A6", "#CC0000", "#374057", "#0071CE",
+  "#00AEEF", "#97CAEB", "#EEEEEE", "#CCCCCC", "#767679"
+)
+```
+
+You can access these colors by number:
+
+```{r}
+gsu_colors[1:2]
+gsu_colors[5]
+gsu_colors[c(3, 5, 9)]
+```
+
+And you can use the `show_col()` function from the {scales} library to show them all:
+
+```{r}
+scales::show_col(gsu_colors)
+```
+
+You can use them in `scale_fill_manual()`/`scale_color_manual()` too:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative +
+  scale_fill_manual(
+    values = gsu_colors[1:5]
+  )
+```
+
+If you want to be extra fancy, [you can create more official custom color palettes]() like `scale_fill_gsu()`.
+
+
+## Perceptually uniform and scientifically calibrated palettes
+
+You aren't limited to just the default ggplot color palettes, or even the default viridis palettes. There are lots of other [perceptually uniform palettes](https://colorcet.com/) that use special ranges of color that can either (1) be used as a sequential gradient or (2) be chopped up into equal distances to create recognizable distinct colors.
+
+
+### The Okabe-Ito palette
+
+[Masataka Okabe and Kei Ito](https://jfly.uni-koeln.de/color/) developed a qualitative color palette for all types of color-vision deficiencies in 2008, and Claus Wilke uses it throughout his [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) book that we use in this class ([he explains why here](https://clauswilke.com/dataviz/color-pitfalls.html#fig:palette-Okabe-Ito)).
+
+![](img/okabe-ito.png)
+
+You can use it with [the {ggokabeito} package](https://malcolmbarrett.github.io/ggokabeito/) and `scale_fill_okabe_ito()`/`scale_color_okabe_ito()`:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_okabe_ito()
+```
+
+### viridis
+
+You've seen the regular green/blue/yellow viridis palette throughout the class, but there are are [a bunch of other palettes within viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#the-color-scales) like magma, plasma, inferno, mako, rocket, and turbo. 
+
+![](img/viridis.png){width=90% fig-align="center"}
+
+None of the viridis palettes are diverging, but they work great for both sequential and qualitative data.
+
+The viridis palettes come with {ggplot2} and you can use them with `scale_fill_viridis_d()`/`scale_color_viridis_d()` for discrete data and `scale_fill_viridis_c()`/`scale_color_viridis_c()` for continuous data.
+
+::: {.panel-tabset}
+
+### `plasma`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_viridis_d(option = "plasma")
+```
+
+### `inferno`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_viridis_d(option = "inferno")
+```
+
+### `mako`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_viridis_d(option = "mako")
+```
+
+### `turbo`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_viridis_d(option = "turbo")
+```
+:::
+
+### Scientific colour maps
+
+[The {scico} package](https://github.com/thomasp85/scico) provides a ton of other similar well-designed palettes from the [Scientific Colour Maps project](https://www.fabiocrameri.ch/colourmaps/). The project includes sequential, diverging, and qualitative palettes and even has multi-sequential and cyclic palettes.
+
+![](img/ScientificColourMaps8-FabioCrameri.png)
+
+After loading the {scico} package, you can use these palettes with `scale_fill_scico_d()`/`scale_color_scico_d()` for discrete data and `scale_fill_scico_c()`/`scale_color_scico_c()` for continuous data.
+
+::: {.panel-tabset}
+### `batlow`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_scico_d(palette = "batlow")
+```
+
+### `bamako`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_scico_d(palette = "bamako")
+```
+
+### `hawaii`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_scico_d(palette = "hawaii")
+```
+
+### `roma` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_diverging +
+  scale_fill_scico_d(palette = "roma")
+```
+
+### `broc` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_diverging +
+  scale_fill_scico_d(palette = "broc")
+```
+:::
+
+### ColorBrewer
+
+Geographer [Cynthia Brewer](https://www.geog.psu.edu/directory/cynthia-brewer) developed a set of color palettes designed specifically for improving the readability of maps, but her palettes work incredibly well for regular plots too. There's also a [fantastic companion website](https://colorbrewer2.org/) for exploring all the different palettes, categories by sequential/diverging/qualitatitve, with options to filter by colorblind friendliness and print friendliness. 
+
+![](img/colorbrewer.png)
+
+To use one of the palettes, note what it's called [at the website](https://colorbrewer2.org/) and use that name as the `palette` argument. The ColorBrewer palettes come with {ggplot2} and you can use them with `scale_fill_brewer()`/`scale_color_brewer()` for discrete data and `scale_fill_distiller()`/`scale_color_distiller()` for continuous data.
+
+::: {.panel-tabset}
+### `YlOrRd` (sequential)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_sequential +
+  scale_color_distiller(palette = "YlOrRd")
+```
+
+### `PuOr` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_diverging +
+  scale_fill_brewer(palette = "PuOr")
+```
+
+### `Set1` (qualitative)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_qualitative +
+  scale_fill_brewer(palette = "Set1")
+```
+
+:::
+
+
+### CARTOColors
+
+The commerical GIS service [CARTO](https://carto.com/) created CARTOColors: [a set of open source geographic-like colors](https://carto.com/carto-colors/) just like ColorBrewer. Again, these were originally designed for maps, but they work great for regular data visualization too.
+
+![](img/cartocolors.png){width=85% fig-align="center"}
+
+You'll need to install [the {rcartocolor} package](https://jakubnowosad.com/rcartocolor/) to use them. After loading {rcartocolor}, you can use any of the palettes with `scale_fill_carto_d()`/`scale_color_carto_d()` for discrete data and `scale_fill_carto_c()`/`scale_color_carto_c()` for continuous data. Use the name of the palette at [the CARTOColors website](https://carto.com/carto-colors/) in the `palette` argument.
+
+::: {.panel-tabset}
+### `PurpOr` (sequential)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_sequential +
+  scale_color_carto_c(palette = "PurpOr")
+```
+
+### `Temps` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_diverging +
+  scale_fill_carto_d(palette = "Temps", direction = -1)
+```
+
+### `Prism` (qualitative)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+# Extract 5 colors from the Prism palette and use them with scale_fill_manual()
+clrs <- carto_pal(12, "Prism")
+
+plot_qualitative +
+  scale_fill_manual(values = clrs[c(1, 4, 6, 7, 8)])
+```
+
+:::
+
+## Fun and artsy (but still useful!) palettes
+
+There are also palettes that are hand-picked for beauty and/or fun. Not all of these are perceptually uniform or colorblind friendly, but they're great for when you want to have pretty graphics that fit a certain vibe. 
+
+
+### Literal art: {MetBrewer} and {MoMAColors}
+
+Use palettes inspired by works in the Metropolitan Museum of Art and the Museum of Modern Art in New York. There are sequential, diverging, and qualitative palettes, and many are marked as colorblind friendly in [{MetBrewer}](https://github.com/BlakeRMills/MetBrewer) and [{MoMAColors}](https://github.com/BlakeRMills/MoMAColors)
+
+Use them by putting `met.brewer()` or `moma.colors()` inside `scale_fill_manual()`/`scale_color_manual()` or `scale_fill_gradientn()`/`scale_color_gradientn()`:
+
+#### {MetBrewer}
+
+::: {.panel-tabset}
+### `OKeeffe2` (sequential)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_sequential +
+  scale_color_gradientn(colors = met.brewer("OKeeffe2"))
+```
+
+![](img/OKeeffe2.png)
+
+### `Hiroshige` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+# Grab 5 of the middle colors from the palette
+clrs <- met.brewer("Hiroshige")
+
+plot_diverging +
+  scale_fill_manual(values = clrs[3:7])
+```
+
+![](img/Hiroshige.png)
+
+### `Johnson` (qualitative)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative +
+  scale_fill_manual(values = met.brewer("Johnson"))
+```
+
+![](img/Johnson.png)
+
+:::
+
+
+#### {MoMAColors}
+
+::: {.panel-tabset}
+### `VanGogh` (sequential)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+plot_sequential +
+  scale_color_gradientn(colors = moma.colors("VanGogh")[2:7])
+```
+
+![](img/VanGogh_Side.png)
+
+### `Kippenberger` (diverging)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+# Grab 5 of the middle colors from the palette
+clrs <- moma.colors("Kippenberger")
+
+plot_diverging +
+  scale_fill_manual(values = clrs[c(2, 4, 6, 8, 10)])
+```
+
+![](img/Kippenberger_Side.png)
+
+### `ustwo` (qualitative)
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+
+plot_qualitative +
+  scale_fill_manual(values = moma.colors("ustwo", 5))
+```
+
+![](img/ustwo_Side.png)
+
+:::
+
+### Other fun things
+
+There are *so many others*. [The {paletteer} package](https://emilhvitfeldt.github.io/paletteer/) contains **thousands** of others—it's like a central collection of every possible palette. 
+
+You can also access individual palettes without using {paletteer}, including these:
+
+**Music**
+
+- [{tayloRswift}](https://github.com/asteves/tayloRswift): Colors from all albums up through "The Tortured Poets Department"
+- [{beyonce}](https://github.com/dill/beyonce): 130 different palettes from [beyoncepalettes.tumblr.com](https://beyoncepalettes.tumblr.com/)
+- [{rockthemes}](https://github.com/johnmackintosh/rockthemes): Janelle Monae, Muse, No Doubt, Red Hot Chili Peppers, etc.
+- [{popthemes}](https://github.com/johnmackintosh/popthemes): Spice Girls, Aqua, No Doubt, etc.
+
+**National parks**
+
+- [{nationalparkcolors}](https://github.com/katiejolly/nationalparkcolors): Colors from 25 different US national parks
+- [{NatParksPalettes}](https://github.com/kevinsblake/NatParksPalettes): Colors from 30 different US and international national parks
+
+**History**
+
+- [{suffrager}](https://github.com/alburezg/suffrager): Colors from old suffragette posters
+- [{inauguration}](https://github.com/ciannabp/inauguration): Colors from the 2021 presidential inauguration
+- [{ggpomological}](https://github.com/gadenbuie/ggpomological): Colors from old drawings of fruit
+
+**TV and movies**
+
+- [{tvthemes}](https://ryo-n7.github.io/tvthemes/): Colors from a ton of TV shows, including The Simpsons, Parks & Recreation, Spongebob Squarepants, Game of Thrones, etc.
+- [{wesanderson}](https://github.com/karthik/wesanderson): Colors from Wes Anderson movies
+- [{trekcolors}](https://github.com/leonawicz/trekcolors): Colors from Star Trek
+- [{severance}](https://github.com/ivelasq/severance): Colors from the Apple TV show [Severance](https://en.wikipedia.org/wiki/Severance_(TV_series))
+- [{ghibli}](https://github.com/ewenme/ghibli): Colors from Studio Ghibli movies
+- [{harrypotter}](https://github.com/aljrico/harrypotter): Colors from Harry Potter movies
+
+**Other things**
+
+- [{nbapalettes}](https://github.com/murrayjw/nbapalettes): Colors from NBA teams
+- [{LaCroixColoR}](https://github.com/johannesbjork/LaCroixColoR): Colors from La Croix cans

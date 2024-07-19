@@ -28,6 +28,13 @@ website:
   description: "Use R, ggplot2, and the principles of graphic design to create beautiful and truthful visualizations of data"
   site-url: "https://datavizs24.classes.andrewheiss.com"
 
+  announcement:
+    icon: calendar-check
+    dismissable: true
+    content: "**Reminder!** The final deadline for all assignments other than the final project is **Wednesday, July 24 at 11:59 PM** ([details](/news/2024-07-16_final-deadlines.html))"
+    type: danger
+    position: below-navbar
+
   favicon: "/files/favicon-512.png"
 
   twitter-card:
@@ -251,6 +258,7 @@ website:
         - section: "Resources"
           contents:
             - resource/index.qmd
+            - resource/colors.qmd
             - resource/design.qmd
             - resource/graphics-editors.qmd
             - resource/visualization.qmd

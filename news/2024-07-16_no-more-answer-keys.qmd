@@ -1,0 +1,17 @@
+---
+title: "No more answer keys"
+date: "2024-07-16T12:57"
+categories: [course details]
+---
+
+Hi everyone!
+
+One last little comment. You may have noticed that iCollege doesn't have answer keys for some of the more recent exercises. **That's by design**. 
+
+After session 8, there are no more answer keys.
+
+That's because starting with the annotations assignment, all the way until the end, your assignments are a lot more open ended. There are no official final correct plots. Most of these assignments go something like "find some data you like and visualize it some way." For the session on annotations, you made some sort of plot and put annotations on it. For the session on interactivity, you made some sort of plot and fed it to `ggplotly()`. For the session on time, you'll make a plot that visualizes time. For the session on space, you made some sort of map. 
+
+**There are no right answers.**
+
+Do whatever you want with whatever data you want. Do whatever is most useful and interesting for you.

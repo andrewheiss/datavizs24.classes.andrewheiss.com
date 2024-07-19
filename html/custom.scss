@@ -394,3 +394,11 @@ pre.text {
 .qwebr-output-code-area {
     margin-top: 1em;
 }
+
+.magic-block {
+    font-style: normal;
+    user-select: none;
+    padding: 0 0.1em 0 0.15em;
+    line-height: 1;
+    font-size: 120%;
+}
