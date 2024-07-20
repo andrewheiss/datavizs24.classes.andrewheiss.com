@@ -2,7 +2,7 @@
 title: "Data Visualization"
 subtitle: "Use R, ggplot2, and the principles of graphic design to create beautiful and truthful visualizations of data"
 details: |
-  PMAP 8101 • Summer 2024<br>Andrew Young School of Policy Studies<br>Georgia State University
+  PMAP 8551/4551 • Summer 2024<br>Andrew Young School of Policy Studies<br>Georgia State University
 sidebar: false
 toc: false
 page-layout: full
