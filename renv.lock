@@ -123,6 +123,35 @@
       ],
       "Hash": "1920b2f11133b12350024297d8a4ff4a"
     },
+    "MetBrewer": {
+      "Package": "MetBrewer",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "ggplot2"
+      ],
+      "Hash": "9dda8af6359c4b3932426430c38fa1b1"
+    },
+    "MoMAColors": {
+      "Package": "MoMAColors",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "BlakeRMills",
+      "RemoteRepo": "MoMAColors",
+      "RemoteRef": "main",
+      "RemoteSha": "6f5d75decc3f0063b199d5f0127d63c950528b8a",
+      "Requirements": [
+        "cowplot",
+        "ggplot2",
+        "ggstream",
+        "graphics",
+        "stats"
+      ],
+      "Hash": "0b3adc6e7f959d5920bbec1ce3efaa1e"
+    },
     "PerformanceAnalytics": {
       "Package": "PerformanceAnalytics",
       "Version": "2.0.4",
@@ -737,6 +766,23 @@
         "R"
       ],
       "Hash": "08b7058813f13c7a1bb294fea9045e3a"
+    },
+    "cowplot": {
+      "Package": "cowplot",
+      "Version": "1.1.3",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grDevices",
+        "grid",
+        "gtable",
+        "methods",
+        "rlang",
+        "scales"
+      ],
+      "Hash": "8ef2084dd7d28847b374e55440e4f8cb"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -1549,6 +1595,18 @@
       ],
       "Hash": "15748f4335af873289fbdd31610c3f96"
     },
+    "ggokabeito": {
+      "Package": "ggokabeito",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grDevices"
+      ],
+      "Hash": "3ebb1aa87a9e095e5693c7fa782a6b1b"
+    },
     "ggplot2": {
       "Package": "ggplot2",
       "Version": "3.5.1",
@@ -1643,6 +1701,23 @@
         "tidyr"
       ],
       "Hash": "02cdab34154e9e70dac279afbb20d34b"
+    },
+    "ggstream": {
+      "Package": "ggstream",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "forcats",
+        "ggplot2",
+        "magrittr",
+        "purrr",
+        "stats",
+        "tidyr"
+      ],
+      "Hash": "4512013654d28dbf39dc4a8f5b9bdde2"
     },
     "ggtext": {
       "Package": "ggtext",
@@ -3020,6 +3095,18 @@
         "R"
       ],
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
+    },
+    "rcartocolor": {
+      "Package": "rcartocolor",
+      "Version": "2.1.1",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "scales"
+      ],
+      "Hash": "f9cde980189339bebe5bb22af925dd3c"
     },
     "reactR": {
       "Package": "reactR",
