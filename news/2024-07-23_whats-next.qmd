@@ -1,0 +1,38 @@
+---
+title: "What's next?"
+date: "2024-07-23T11:09"
+categories: [advice]
+---
+
+A bunch of you have asked me what other R-related classes you can take. Good news—there are a bunch!
+
+### Policy analytics concentration and certificate
+
+The Andrew Young School has a [whole policy analytics initiative](https://aysps.gsu.edu/digital-landscape/courses-credentials/) that's focused on using R and Python in the public sector, with classes like these:
+
+- PMAP 8521: Evaluation Research
+- PMAP 8511: Big Data for Public Good
+- ECON 8720: Introduction to Data Management and Analysis
+- PMAP 8541: Coding in R for Policy Analytics
+- PMAP 8571: Machine Learning for Policy Analytics
+- PMAP 8561: GIS Applications
+
+If you're an MPP student, you can actually do a [policy analytics concentration](https://news.gsu.edu/2022/07/18/georgia-states-master-of-public-policy-offers-new-policy-analytics-concentration/) and become an expert in all these things.
+
+If you're an MPA student or if you're not an AYS student (about half of you this summer aren't actually MPA/MPP students!), you can complete the new [policy analytics graduate certificate](https://www.gsu.edu/program/policy-analytics-graduate-cert/).
+
+### Program Evaluation
+
+I teach the first class in that list ↑—[Evaluation Research (PMAP 8521)](https://evalsp24.classes.andrewheiss.com/)—in the spring. It's a really fun and useful class (I've had students get jobs because of it!), and tbh I find it far more practical and intuitive than econ :). It's basically a class in econometrics, or econ-flavored statistics focused on causation.
+
+In the class you'll learn all about causal inference, or how to legally claim causation with statistics. In your past classes you were always taught "correlation isn't causation," which is mostly true, except when it's not. In this class, you'll get to legitimately make causal claims. We'll cover fun tools like directed acyclic graphs (DAGs), randomized controlled trials, difference-in-differences analysis, regression discontinuity analysis, and instrumental variables. It's all based in R too (which means you can keep using it after you graduate and not have to pay for really really expensive SPSS or Stata licenses). The R part is why former students have found jobs—tons of organizations are looking for R skills nowadays.
+
+If you can interpret regression results and if you know what statistical significance means, you have the stats background for the class.
+
+[You can see the website from the most recent version of the class](https://evalsp24.classes.andrewheiss.com/), and it's full of videos and interactive code tutorials and other resources, just like this class.
+
+### Comparative Public Administration
+
+Outside of my data work, my PhD expertise is actually in international relations and political science. In the fall, I teach a class called [Comparative Public Administration (PMAP 8441)](https://compasp23.classes.andrewheiss.com/), which is just fancy academic speak for "how the public and nonprofit sectors work in different countries." If you have any interest in international politics or international NGOs, you'd enjoy it!
+
+[You can see the website from last year's version of the class here](https://compasp23.classes.andrewheiss.com/).

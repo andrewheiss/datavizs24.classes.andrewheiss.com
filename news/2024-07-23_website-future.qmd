@@ -1,0 +1,15 @@
+---
+title: "Class website future"
+date: "2024-07-23T11:00"
+categories: [course details]
+---
+
+Hello everyone!
+
+Congratulations on making it through such a tough class during an even tougher accelerated summer semester!
+
+A few of you have wondered about what's going to happen to the course website. It will stay up indefinitely. The whole reason I put all the course materials on a standalone website rather than on iCollege is so that you can reference the materials in the future.
+
+If you forget the (admittedly) long and hairy URL, go to [https://www.andrewheiss.com/teaching/](https://www.andrewheiss.com/teaching/) where you can see all my past classes (if you haven't figured out the URL naming scheme yet, it's `shortname + semester + year`, so `datavizs24` dot classes dot andrewheiss dot com; with that, you can figure out all my other classes: `evalsp24`, `datavizf23`, `econs24`, and so on)
+
+The only things that aren't there are the answer keys and since I don't want the answer keys publicly accessible. So make sure you get those off iCollege before you lose access to the course there.
