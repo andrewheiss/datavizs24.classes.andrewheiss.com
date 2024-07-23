@@ -30,7 +30,7 @@ slide_details <- tibble::tribble(
     - {{< fa arrow-up-right-from-square >}} [What is seasonal adjustment and why is it used?](http://junkcharts.typepad.com/junk_charts/2010/11/what-is-seasonal-adjustment-and-why-is-it-used.html)
     - {{< fa arrow-up-right-from-square >}} [The start-at-zero rule](http://junkcharts.typepad.com/junk_charts/2005/09/the_startatzero.html)
     - {{< fa arrow-up-right-from-square >}} [Keeping one's appetite after touring the sausage factory](http://junkcharts.typepad.com/numbersruleyourworld/2011/02/keeping-ones-appetite-after-touring-the-sausage-factory.html)
-    - {{< fa arrow-up-right-from-square >}} [How Common is Your Birthday? This Visualization Might Surprise You](http://thedailyviz.com/2016/09/17/how-common-is-your-birthday-dailyviz/)
+    - {{< fa arrow-up-right-from-square >}} [Calculating birthday probabilities with R instead of math](https://www.andrewheiss.com/blog/2024/05/03/birthday-spans-simulation-sans-math/)
 
 
 ### Recommended
